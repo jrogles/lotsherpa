@@ -1,0 +1,154 @@
+/** Fall Back Colors */
+:root {
+  --primary: #1e80c2;
+  --primary-light: #69cdf5;
+  --primary-dark: #224870;
+  --accent1: #ff6315;
+  --accent2: #6bffb8;
+  --light: #fff;
+  --dark: #121a40;
+}
+
+/** Box Model  */
+$spacer:                2rem;
+
+$breakpoints: (
+  xs: 375px,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+  xxl: 1600px
+);
+
+$max-widths: (
+  xs: 350px,
+  sm: 420px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1440px
+);
+
+@function breakpoints($key) {
+  @return map-get($breakpoints, $key);
+}
+
+@function max-widths($key) {
+  @return map-get($max-widths, $key);
+}
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
+
+@mixin contain {
+  @each $size, $width in $max-widths {
+    @media (min-width: map-get($breakpoints, $size)) {
+      width: 100%;
+      max-width: $width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+$border-size: 5px;
+
+@mixin border($color) {
+  border: $border-size solid $color;
+}
+
+$pad: 2rem;
+
+$line-height: 1.5;
+
+$font-sizes: (
+  xs: 0.8rem,
+  sm: 1rem,
+  md: 1.4rem,
+  lg: 1.9rem,
+  xl: 2.25rem,
+  xxl: 3rem
+);
+
+@function font-sizes($key) {
+  @return map-get($font-sizes, $key);
+}
+
+$max-logo-width: 300px;
+
+/* animations */
+@keyframes float {
+  0% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+    transform: translateY(0);
+  }
+
+  50% {
+    box-shadow: 0 25px 15px 0 rgba(0, 0, 0, 0.2);
+    transform: translateY(-150px);
+  }
+
+  100% {
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+    transform: translateY(0);
+  }
+}
+
+@keyframes glimmer {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes glimmer2 {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes glimmer3 {
+  0% {
+    opacity: 0.5;
+  }
+
+  33% {
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.5;
+  }
+}

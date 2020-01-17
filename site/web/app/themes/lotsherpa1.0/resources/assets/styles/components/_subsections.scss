@@ -1,0 +1,164 @@
+.subsections {
+  margin-top: 5vh;
+  display: grid;
+
+  @include contain;
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
+    margin: 1rem;
+    align-self: stretch;
+    grid-gap: 4vw;
+
+    @include breakpoint(md) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @include contain;
+  }
+}
+
+.subsection {
+  margin-bottom: 5vh;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "content"
+    "figure";
+  color: var(--light);
+  background-color: var(--primary);
+
+  @include border(var(--primary));
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    margin-bottom: 2rem;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &--left {
+    @include breakpoint(md) {
+      grid-template-areas: "content content figure";
+    }
+  }
+
+  &--right {
+    @include breakpoint(md) {
+      grid-template-areas: "figure content content";
+    }
+  }
+
+  &__content,
+  &__figure {
+    align-self: center;
+  }
+
+  &__content {
+    grid-area: content;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding: ($pad/2);
+  }
+
+  &__title {
+    color: var(--light);
+    font-weight: 700;
+    margin-top: 0;
+  }
+
+  &__figure {
+    background-color: var(--light);
+    align-self: stretch;
+    display: grid;
+    padding: 5vw;
+
+    @include breakpoint(md) {
+      grid-area: figure;
+      padding: 5vw;
+    }
+
+    @include breakpoint(xl) {
+      padding: 2vw;
+    }
+  }
+
+  &__img {
+    place-self: center;
+    width: 100%;
+    max-height: 165px;
+
+    @include breakpoint(xl) {
+      max-width: 325px;
+      max-height: 325px;
+    }
+  }
+
+  &-link {
+    display: grid;
+    grid-template-rows: repeat(4, auto-fill);
+    background-color: var(--light);
+    border-bottom: none;
+    color: var(--primary);
+    place-self: stretch;
+    align-items: stretch;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &__title {
+      color: var(--primary);
+      margin: 0.5rem;
+      padding-top: 1rem;
+    }
+
+    &__subtitle {
+      font-size: 0.8rem;
+
+      @include breakpoint(lg) {
+        font-size: 0.9rem;
+      }
+    }
+
+    &__icon {
+      width: 100%;
+      max-height: 200px;
+      margin: 0;
+      padding: 1rem;
+      box-sizing: inherit;
+    }
+
+    &__desc {
+      display: none;
+    }
+
+    &__title,
+    &__subtitle,
+    &__desc {
+      margin: 0.5rem;
+      text-align: center;
+    }
+
+    &__cta {
+      align-self: end;
+      text-align: center;
+      padding: 1rem;
+      margin: 0;
+      background-color: var(--primary);
+      color: var(--light);
+      transition: background-color 0.273s ease-in-out;
+      font-size: font-sizes(xs);
+    }
+
+    &:hover &__cta {
+      background-color: var(--primary-dark);
+      transition: background-color 0.323s ease-in-out;
+    }
+  }
+}

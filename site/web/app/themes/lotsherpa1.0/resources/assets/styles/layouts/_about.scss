@@ -1,0 +1,29 @@
+.about {
+  .tile__title {
+    font-weight: 300;
+    align-self: center;
+  }
+
+  .tile:first-child {
+    .tile__title {
+      max-width: 19ch;
+      margin-top: 1.25rem;
+
+      &::first-line {
+        font-size: font-sizes(md);
+        font-weight: 700;
+      }
+    }
+  }
+
+  .tile:nth-child(2) {
+    .tile__img {
+      max-height: 200px;
+    }
+
+    .tile__title {
+      font-size: font-sizes(sm);
+      margin-bottom: 1rem;
+    }
+  }
+}

@@ -1,0 +1,151 @@
+.header {
+  background-color: var(--primary-dark);
+  display: grid;
+  grid-template-areas: "logo";
+  grid-template-columns: 1fr;
+  grid-gap: 0.5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+
+  @include breakpoint(md) {
+    position: relative;
+  }
+
+  @include breakpoint(xl) {
+    grid-template-columns: 1fr 4fr;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0.5rem;
+
+    &__img {
+      max-width: $max-logo-width;
+    }
+  }
+
+  .nav {
+    list-style: none;
+    margin: 0;
+    padding: 1rem;
+    align-self: center;
+
+    li {
+      display: block;
+      padding: 0.5rem;
+
+      @include breakpoint(xl) {
+        display: inline-block;
+        margin: 0 1rem 0 0;
+      }
+    }
+
+    &-primary {
+      background-color: var(--primary-dark);
+      position: fixed;
+      top: 110vh;
+      bottom: 0;
+      width: 100vw;
+      overflow-y: scroll;
+
+      @include breakpoint(xl) {
+        align-self: stretch;
+        align-content: stretch;
+        justify-self: end;
+        display: grid;
+        position: relative;
+        top: initial;
+        bottom: initial;
+        width: initial;
+      }
+    }
+
+    .menu-item a {
+      border-bottom: 1px solid transparent;
+      transition: color 0.35s ease-in-out, border-bottom 0.35s ease-in-out;
+
+      &:hover {
+        border-bottom: 1px solid var(--light);
+        color: var(--accent2);
+        transition: color 0.45s ease-in-out, border-bottom 0.45s ease-in-out;
+      }
+    }
+
+    .btn a:hover {
+      border-bottom: none;
+    }
+
+    &__mobile-toggle {
+      @extend .btn;
+      @extend .btn--square;
+
+      display: grid;
+      text-align: center;
+      place-self: stretch;
+      align-content: center;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 1rem 0;
+      margin: 0;
+      transition: all 0.3s ease-in-out;
+      z-index: 999;
+      overflow: hidden;
+      border: 2px solid var(--primary-dark);
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 0;
+        top: 50%;
+        left: 50%;
+        transform-style: flat;
+        transform: translate3d(-50%, -50%, 0);
+        background: rgba(white, 0.1);
+        border-radius: 100%;
+        transition: width 0.3s ease, height 0.3s ease;
+      }
+
+      &:active {
+        &::after {
+          width: 60em;
+          height: 60em;
+        }
+      }
+
+      @include breakpoint(xl) {
+        display: none;
+      }
+    }
+  }
+
+  &.active {
+    position: fixed;
+
+    @include breakpoint(md) {
+      position: relative;
+    }
+
+    .nav-primary {
+      top: 20vh;
+      bottom: 0;
+      transition: top 0.253s ease-out;
+    }
+
+    .btn {
+      display: block;
+    }
+
+    .nav__mobile-toggle {
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+

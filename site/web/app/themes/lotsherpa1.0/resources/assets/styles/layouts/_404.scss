@@ -1,0 +1,51 @@
+.error404 {
+  h1 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  h1,
+  p {
+    padding: 0 1rem;
+    text-align: center;
+  }
+
+  .search-form {
+    text-align: center;
+    margin: 1rem;
+  }
+}
+
+.svg404 {
+  width: 100vw;
+  display: block;
+  margin: -2rem auto 5vh auto;
+
+  @include breakpoint(xl) {
+    margin: -5vh auto 5vh auto;
+    width: 75vw;
+    max-width: 1300px;
+  }
+
+  #CHARACTER {
+    overflow: hidden;
+    box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
+    transform: translateY(0);
+    animation: float 6s ease-in-out infinite;
+  }
+
+  #SPARKLES {
+    path:nth-of-type(n) {
+      animation: glimmer 3s ease-in-out infinite;
+    }
+
+    path:nth-of-type(2n+1) {
+      animation: glimmer2 2.5s ease-in-out infinite;
+    }
+
+    path:nth-of-type(3n+1) {
+      animation: glimmer3 2.75s ease-in-out infinite;
+    }
+  }
+}
+

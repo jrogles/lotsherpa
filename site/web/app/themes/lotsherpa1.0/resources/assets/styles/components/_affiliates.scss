@@ -1,0 +1,36 @@
+.affiliates {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, max(20vw));
+  grid-gap: 5vw;
+  justify-content: center;
+  height: 25vh;
+  background-repeat: no-repeat;
+  background-image: url("../images/snow-pile.svg");
+  background-size: 100%;
+  background-position-y: 101%;
+
+  @include breakpoint(lg) {
+    grid-template-columns: repeat(auto-fit, max(10vw));
+    margin-top: 0;
+  }
+
+  .affiliate {
+    place-self: center center;
+
+    @include breakpoint(lg) {
+      place-self: center;
+      margin-top: 0;
+    }
+
+    &__title {
+      color: var(--primary-dark);
+      text-align: center;
+      margin-top: 1.5rem;
+      font-weight: 500;
+    }
+
+    &__icon {
+      width: 90%;
+    }
+  }
+}

@@ -1,0 +1,62 @@
+html {
+  @include breakpoint(xxl) {
+    font-size: 18px;
+  }
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+h1 {
+  font-size: font-sizes(xxl);
+}
+
+h2 {
+  font-size: font-sizes(xl);
+  font-weight: 300;
+}
+
+h3 {
+  font-size: font-sizes(lg);
+}
+
+h4 {
+  font-size: font-sizes(md);
+}
+
+h5 {
+  font-size: font-sizes(sm);
+}
+
+h6 {
+  font-size: font-sizes(xs);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--primary);
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+p,
+li {
+  font-size: font-sizes(sm);
+  max-width: 65ch;
+  line-height: $line-height;
+}
+
+a {
+  text-decoration: none;
+  color: var(--light);
+  border-bottom: 1px solid transparent;
+
+  &:hover {
+    border-bottom: 1px solid var(--light);
+  }
+}

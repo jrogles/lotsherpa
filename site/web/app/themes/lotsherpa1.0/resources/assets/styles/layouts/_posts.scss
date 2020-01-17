@@ -1,0 +1,249 @@
+.posts {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  grid-gap: 1rem;
+  padding: 0 1rem;
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0;
+  }
+
+  @include breakpoint(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  &-link {
+    * {
+      @extend .btn;
+
+      display: inline-block;
+      color: var(--light);
+    }
+  }
+}
+
+.post {
+  margin: 1rem 0;
+  height: 400px;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 45% 40% 15%;
+  grid-template-areas:
+    "header header"
+    "body body"
+    "categories cta";
+  color: var(--primary);
+  text-align: left;
+  background-color: #fff;
+
+  @include border(var(--primary));
+
+  @include breakpoint(md) {
+    max-height: 500px;
+    margin-left: 2rem;
+    margin-bottom: 2rem;
+    grid-template-columns: 3fr 1fr;
+    grid-template-rows: 200px auto;
+  }
+
+  @include breakpoint(xl) {
+    grid-template-rows: 50% 35% 15%;
+  }
+
+  &__header {
+    position: relative;
+    grid-area: header;
+    background-color: var(--primary);
+    text-align: center;
+    overflow: hidden;
+    padding: 1rem;
+  }
+
+  .wp-post-image {
+    width: 100%;
+    height: initial;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    z-index: 0;
+  }
+
+  &__date {
+    color: var(--light);
+    position: absolute;
+    left: 0.5rem;
+    bottom: 0.5rem;
+    z-index: 5;
+  }
+
+  &__body {
+    grid-area: body;
+    padding: 0.25rem 1rem 1rem 1rem;
+    background-color: #fff;
+  }
+
+  &__excerpt,
+  &__categories,
+  &__cta {
+    font-size: 90%;
+  }
+
+  &__title {
+    color: var(--primary);
+    grid-column: span 2;
+    grid-row: 1;
+    margin: 0.5rem 0;
+    z-index: 5;
+    position: relative;
+  }
+
+  &__excerpt {
+    grid-column: span 2;
+    grid-row: 2;
+    overflow: hidden;
+    font-size: font-sizes(xs);
+  }
+
+  &__categories {
+    background-color: var(--primary-dark);
+    grid-area: categories;
+    font-size: 80%;
+    line-height: 1.7;
+    place-self: stretch;
+    padding: 0.25rem;
+    border-top: 2px solid var(--primary-dark);
+    border-left: 5px solid var(--primary-dark);
+    border-right: 5px solid var(--primary-dark);
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    z-index: 5;
+    position: relative;
+  }
+
+  &__category {
+    @extend .btn;
+    @extend .btn--inverse;
+
+    display: flex;
+    align-self: stretch;
+    align-self: center;
+    padding: 0.25rem;
+    margin: 0.5rem;
+  }
+
+  &__cta {
+    grid-area: cta;
+    place-self: stretch;
+    background-color: var(--primary-light);
+    display: grid;
+    place-content: center;
+    transition: background-color 0.22s ease-in;
+
+    &:hover {
+      background-color: var(--primary);
+      transition: background-color 0.3s ease-out;
+    }
+  }
+
+  &__link {
+    place-self: center;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &--full {
+    @include contain;
+
+    height: initial;
+    max-height: none;
+    display: block;
+
+    .post__header {
+      height: 16vh;
+      text-align: left;
+      position: relative;
+
+      &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--primary-dark-a);
+        z-index: 1;
+      }
+    }
+
+    .post__title {
+      color: var(--light);
+    }
+
+    .post__date {
+      position: relative;
+    }
+
+    .post__categories {
+      background-color: transparent;
+      border: none;
+      overflow: inherit;
+    }
+
+    .post__category {
+      //background-color: var(--primary-dark-a);
+    }
+
+    .post__body {
+      > p,
+      > div {
+        max-width: 100ch;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+  }
+}
+
+/* single blog post page */
+.related-posts {
+  display: flex;
+  flex-direction: column;
+  justify-content: left;
+
+  @include breakpoint(md) {
+    flex-direction: row;
+  }
+
+  &__wrap {
+    margin: 5vh 0;
+
+    @include contain;
+  }
+
+  .post {
+    margin: 1rem 0 0 0;
+
+    @include breakpoint(md) {
+      width: 45%;
+      margin: 0 2.5%;
+    }
+
+    @include breakpoint(lg) {
+      width: 30%;
+      margin: 0 1%;
+    }
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}

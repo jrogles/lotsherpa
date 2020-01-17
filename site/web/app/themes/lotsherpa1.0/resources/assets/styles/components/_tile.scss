@@ -1,0 +1,77 @@
+.tile {
+  position: relative;
+  display: grid;
+  place-self: stretch;
+  place-items: center;
+  text-align: center;
+  background-color: var(--light);
+  border: 1px solid var(--dark);
+
+  &__title {
+    align-self: start;
+    color: var(--primary);
+  }
+
+  &__img {
+    margin-top: 1rem;
+    max-width: 200px;
+  }
+
+  &--multi {
+    background-color: var(--primary-light);
+    display: grid;
+    grid-template-areas:
+      "title cta1"
+      "title cta2";
+    grid-template-rows: 1fr 1fr;
+    margin-top: 3rem;
+
+    @include breakpoint(md) {
+      margin-top: 0;
+    }
+
+    &__title {
+      display: grid;
+      grid-area: title;
+      background-color: var(--primary);
+      color: var(--light);
+      place-self: stretch;
+      padding: 1rem;
+
+      &__text {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+    }
+
+    &__cta {
+      border: 1px solid var(--light);
+      place-self: stretch;
+      background-color: transparent;
+      transition: background-color 0.24s ease-out;
+
+      &:hover {
+        background-color: var(--primary-dark);
+        transition: background-color 0.3s ease-in;
+      }
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+    }
+
+    &__img {
+      margin: 1rem;
+      width: 50px;
+
+      @include breakpoint(md) {
+        margin: initial;
+      }
+    }
+  }
+}

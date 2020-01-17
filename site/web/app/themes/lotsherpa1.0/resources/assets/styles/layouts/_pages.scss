@@ -1,0 +1,104 @@
+.page {
+  margin: 0;
+  background-color: var(--dark);
+}
+
+.content {
+  margin-top: 85px;
+  width: 100%;
+
+  @include breakpoint(md) {
+    margin-top: 0;
+  }
+}
+
+.main {
+  &__title,
+  &__description {
+    padding: 0 1rem;
+    color: var(--light);
+  }
+
+  &__title {
+    font-weight: 300;
+    text-align: center;
+    font-size: font-sizes(lg);
+
+    @include breakpoint(md) {
+      font-size: font-sizes(xl);
+    }
+
+    @include breakpoint(xl) {
+      font-size: font-sizes(xxl);
+    }
+  }
+
+  &__description {
+    text-align: left;
+    padding-bottom: 1rem;
+
+    @include breakpoint(md) {
+      text-align: center;
+    }
+
+    p {
+      margin: 0 auto;
+    }
+  }
+
+  &__figure {
+    background-color: var(--light);
+    margin: 2rem 0;
+    padding: 1rem;
+    text-align: center;
+
+    @include border(var(--primary));
+  }
+}
+
+.section {
+  width: 100%;
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto;
+  padding: 1.5vh 0;
+  margin-top: 15vh;
+
+  &:first-child {
+    margin-top: inherit;
+  }
+
+  &__wrap {
+    background-color: var(--primary);
+    place-self: center;
+    display: grid;
+    margin: 0.5rem;
+    padding: 2rem;
+
+    @include breakpoint(md) {
+      margin: 0.5rem;
+      padding: 2rem;
+    }
+
+    @include breakpoint(lg) {
+      padding: $pad;
+    }
+  }
+
+  &__title {
+    margin-top: 0;
+    align-self: end;
+  }
+
+  &__description {
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+}
+
+.disclosures {
+  color: var(--light);
+  margin-bottom: $pad;
+
+  @include contain;
+}

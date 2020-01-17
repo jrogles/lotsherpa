@@ -1,0 +1,88 @@
+.template-interior-short {
+  main {
+    padding: 1rem;
+
+    @include breakpoint(xl) {
+      min-height: 50vh;
+    }
+  }
+
+  .main {
+    display: grid;
+    grid-template-areas:
+      "content"
+      "secondary";
+    grid-template-rows: auto;
+
+    @include contain;
+  }
+
+  .main.left,
+  .main.right {
+    text-align: left;
+    background-color: var(--light);
+    margin-top: 2.5vh;
+    margin-bottom: 5vh;
+    color: var(--primary);
+  }
+
+  .main.left {
+    @include breakpoint(lg) {
+      grid-template-areas: "content secondary";
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  .main.right {
+    @include breakpoint(lg) {
+      grid-template-areas: "secondary content";
+      grid-template-columns: 1fr 2fr;
+    }
+  }
+
+  .section {
+    text-align: left;
+    margin-top: 0;
+    width: inherit;
+    display: block;
+
+    @include breakpoint(md) {
+      width: 100%;
+    }
+
+    &__title {
+      font-weight: 300;
+    }
+
+    &__title,
+    &__content {
+      padding-left: ($pad/2);
+      padding-right: ($pad/2);
+
+      @include breakpoint(md) {
+        padding-left: $pad;
+        padding-right: $pad;
+      }
+    }
+
+    &__secondary {
+      padding: 0;
+      display: block;
+
+      @include breakpoint(md) {
+        display: grid;
+        grid-area: secondary;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+      }
+
+      .tile--multi {
+        grid-column: 1 / 3;
+
+        @include breakpoint(md) {
+          grid-column: 1;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,142 @@
+/* archive settings */
+.archive {
+  .content {
+    @include contain;
+  }
+
+  .posts {
+    grid-template-rows: auto;
+  }
+}
+
+/* blog */
+.blog {
+  .content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: "main";
+    position: relative;
+    margin-bottom: 2rem;
+
+    @include contain;
+
+    @include breakpoint(lg) {
+      margin-bottom: 2vh;
+      grid-template-columns: 3fr 1.5fr;
+      grid-template-rows: auto;
+      grid-template-areas:
+        "main featured"
+        "main featured";
+    }
+
+    @include breakpoint(lg) {
+      height: auto;
+    }
+  }
+}
+
+.main-posts {
+  grid-area: main;
+  padding: 0 1rem;
+  display: block;
+
+  @include breakpoint(xxl) {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  &.inactive {
+    display: none;
+  }
+
+  &__title {
+    font-size: font-sizes(sm);
+    display: inline-block;
+    max-width: 60vw;
+
+    @include breakpoint(lg) {
+      width: auto;
+    }
+  }
+
+  .post {
+    grid-column: span 1;
+
+    &.category-featured {
+      @include border(var(--primary-light));
+
+      @include breakpoint(lg) {
+        grid-column: span 2;
+      }
+    }
+  }
+
+  .posts {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr;
+    grid-gap: 1rem;
+
+    @include breakpoint(lg) {
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 2.55vw;
+      grid-auto-flow: dense;
+    }
+  }
+}
+
+.featured-posts {
+  display: none;
+  grid-area: main;
+  padding: 0 1rem 2rem 1rem;
+  margin: 0;
+  border-color: var(--dark);
+  background-color: var(--primary-dark);
+
+  @include breakpoint(lg) {
+    grid-area: featured;
+    margin-top: 0;
+    margin-bottom: 0;
+    display: block;
+  }
+
+  &.active {
+    display: block;
+  }
+
+  &__title {
+    font-size: font-sizes(sm);
+    color: var(--light);
+  }
+
+  &__toggle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: block;
+    padding: 5px 10px;
+    color: var(--light);
+    text-align: right;
+    font-size: 12px;
+    max-width: 40vw;
+
+    @include breakpoint(lg) {
+      display: none;
+    }
+  }
+
+  .posts {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 5vh;
+  }
+}
+
+.main-posts,
+.featured-posts {
+  overflow-y: auto;
+
+  .post {
+    margin: 0;
+  }
+}

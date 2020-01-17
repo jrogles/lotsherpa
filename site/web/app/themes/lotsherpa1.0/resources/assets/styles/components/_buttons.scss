@@ -1,0 +1,70 @@
+.btns {
+  margin: 1rem 0;
+  text-align: center;
+
+  @include breakpoint(md) {
+    text-align: left;
+  }
+}
+
+.btn {
+  background-color: var(--primary-light);
+  border: 2px solid var(--primary-light);
+  padding: 1rem;
+  margin: 0.5rem 0.25rem;
+  display: inline-block;
+  border-radius: $border-size;
+  font-weight: 600;
+  transition: background-color 0.3s ease-in-out, border-color 0 ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+
+  @include breakpoint(lg) {
+    margin: 1rem 2rem 1rem 0;
+  }
+
+  &:active,
+  &:hover {
+    background-color: var(--primary);
+    border: 2px solid var(--primary-light);
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+  }
+
+  &--primary,
+  &-primary {
+    background-color: var(--accent1);
+    border: 2px solid transparent;
+
+    &:hover {
+      background-color: transparent;
+      border: 2px solid var(--accent1);
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+    }
+  }
+
+  &--secondary,
+  &-secondary {
+    border: 2px solid var(--primary-light);
+    background-color: transparent;
+
+    &:hover {
+      background-color: var(--primary-light);
+      border: 2px solid transparent;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+    }
+  }
+
+  &--inverse {
+    border: 2px solid var(--primary-light);
+    background-color: transparent;
+    color: var(--primary-light);
+
+    &:hover {
+      border: 2px solid var(--primary-light);
+      background-color: var(--primary-light);
+      color: var(--light);
+    }
+  }
+
+  &--square {
+    border-radius: 0;
+  }
+}
