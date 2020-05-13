@@ -9,7 +9,7 @@
 
   @include breakpoint(md) {
     margin: 5vh auto;
-    grid-template-columns: 1fr 3fr;
+    grid-template-columns: 7fr 4fr;
     min-height: 40vh;
   }
 
@@ -38,24 +38,8 @@
   &__img {
     position: relative;
     width: 100vw;
-
-    @include breakpoint(md) {
-      max-width: 100%;
-      position: relative;
-      left: 0;
-    }
-
-    @include breakpoint(lg) {
-      max-width: 250px;
-    }
-
-    @include breakpoint(xl) {
-      max-width: 400px;
-    }
-
-    @include breakpoint(xxl) {
-      max-width: 500px;
-    }
+    max-width: 100%;
+    margin-left: 7.5vw;
   }
 
   &__copy {
@@ -63,7 +47,7 @@
     background-color: var(--dark-a);
     align-self: stretch;
     justify-self: stretch;
-    padding: 2rem 1rem 1rem 1rem;
+    padding: 2rem 1rem 1rem 2rem;
     color: var(--light);
     text-align: left;
     z-index: 2;
@@ -71,7 +55,7 @@
     @include border(var(--dark));
 
     @include breakpoint(lg) {
-      padding: 3rem;
+      padding: 3rem 3rem 3rem 5rem;
     }
 
     &::before {
@@ -81,11 +65,11 @@
         display: grid;
         justify-self: stretch;
         background-color: var(--primary);
-        width: 10vw;
+        width: 50vw;
         height: 100%;
         position: absolute;
         top: -$border-size;
-        left: -10vw;
+        left: -50vw;
         z-index: -10;
 
         @include border(var(--dark));
@@ -98,7 +82,7 @@
       font-size: (font-sizes(sm));
 
       @include breakpoint(lg) {
-        font-size: (font-sizes(md) * 0.85);
+        //font-size: (font-sizes(md) * 0.85);
       }
 
       &:last-child {

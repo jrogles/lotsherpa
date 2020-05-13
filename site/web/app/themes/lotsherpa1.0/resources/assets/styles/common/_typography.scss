@@ -9,16 +9,28 @@ body {
 }
 
 h1 {
-  font-size: font-sizes(xxl);
+  font-size: font-sizes(lg);
+
+  @include breakpoint(lg) {
+    font-size: font-sizes(xxl);
+  }
 }
 
 h2 {
-  font-size: font-sizes(xl);
+  font-size: font-sizes(lg);
   font-weight: 300;
+
+  @include breakpoint(lg) {
+    font-size: font-sizes(xl);
+  }
 }
 
 h3 {
-  font-size: font-sizes(lg);
+  font-size: font-sizes(md);
+
+  @include breakpoint(lg) {
+    font-size: font-sizes(lg);
+  }
 }
 
 h4 {

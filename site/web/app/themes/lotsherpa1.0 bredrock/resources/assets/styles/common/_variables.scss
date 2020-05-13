@@ -1,0 +1,119 @@
+/** Colors */
+:root {
+  --primary: #1e80c2;
+  --primary-light: #69cdf5;
+  --primary-dark: #224870;
+  --accent1: #ff6315;
+  --accent2: #6bffb8;
+  --light: #fff;
+  --dark: #121a40;
+  // rbg for transparency
+  --primary-rgb: rgb(var(--primary));
+  --primary-light-rgb: "105,205,245";
+  --primary-dark-rgb: #224870;
+  --accent1-rgb: #ff6315;
+  --accent2-rgb: #6bffb8;
+  --light-rgb: #fff;
+  --dark-rgb: #121a40;
+}
+
+/** Box Model  */
+$spacer:                2rem;
+
+$breakpoints: (
+  xs: 375px,
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1200px,
+  xxl: 1600px
+);
+
+$max-widths: (
+  xs: 350px,
+  sm: 420px,
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1340px
+);
+
+@mixin breakpoint($breakpoint) {
+  @if map-has-key($breakpoints, $breakpoint) {
+
+    $breakpoint-value: map-get($breakpoints, $breakpoint);
+
+    @media (min-width: $breakpoint-value) {
+      @content;
+    }
+  }
+
+  @else {
+    @warn "Invalid breakpoint: #{$breakpoint}.";
+  }
+}
+
+@mixin contain {
+  @each $size, $width in $max-widths {
+    @media (min-width: map-get($breakpoints, $size)) {
+      width: 100%;
+      max-width: $width;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+$border-size: 5px;
+
+@mixin border($color) {
+  border: $border-size solid $color;
+}
+
+$pad: 2rem;
+
+$line-height: 1.5;
+
+$font-sizes: (
+  xs: 0.8rem,
+  sm: 1rem,
+  md: 1.4rem,
+  lg: 1.9rem,
+  xl: 2.25rem,
+  xxl: 3rem
+);
+
+@function font-sizes($key) {
+  @return map-get($font-sizes, $key);
+}
+
+$theme-colors: (
+  "primary": (
+    "base": #1e80c2,
+    "light": #69cdf5,
+    "dark": #224870
+  ),
+  "accent": (
+    "orange": #ff6315,
+    "seafoam": #6bffb8,
+    "dark": #e47f17
+  ),
+  "foreground": (
+    "base": #393939,
+    "light": #6e6e6e,
+    "dark": #111
+  ),
+  "background": (
+    "base": #121a40,
+    "light": #fff,
+    "dark": #ddd
+  )
+);
+
+@function theme-color($key: "primary", $variant: "base") {
+  $map: map-get($theme-colors, $key);
+
+  @return map-get($map, $variant);
+}
+
+$max-logo-width: 375px;

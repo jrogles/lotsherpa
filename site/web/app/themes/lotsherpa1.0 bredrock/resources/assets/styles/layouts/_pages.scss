@@ -1,0 +1,329 @@
+body {
+  margin: 0;
+  background-color: var(--dark);
+}
+
+.disclosures {
+  color: var(--light);
+  margin-bottom: $pad;
+
+  @include contain;
+}
+
+.section {
+  width: 100%;
+  text-align: center;
+  display: grid;
+  grid-template-rows: auto;
+  padding: 1.5vh 0;
+  margin-top: 15vh;
+
+  &:first-child {
+    margin-top: inherit;
+  }
+
+  &__wrap {
+    background-color: var(--primary);
+    place-self: center;
+    padding: 0 0.5rem;
+    display: grid;
+
+    @include contain;
+
+    @include breakpoint(lg) {
+      padding: $pad;
+      //min-height: 75vh;
+    }
+  }
+
+  &__title {
+    margin-top: 0;
+    align-self: end;
+  }
+
+  &__description {
+    margin: 0 auto;
+    line-height: 1.75;
+  }
+
+  &__figure {
+    //
+  }
+}
+
+//interior long basicall
+.subsection {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "content"
+    "figure";
+  color: var(--light);
+  background-color: var(--primary);
+  margin-bottom: 15vh;
+
+  @include border(var(--primary));
+
+  @include breakpoint(md) {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    margin-bottom: 2rem;
+  }
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  &--left {
+    @include breakpoint(md) {
+      grid-template-areas: "content content figure";
+    }
+  }
+
+  &--right {
+    @include breakpoint(md) {
+      grid-template-areas: "figure content content";
+    }
+  }
+
+  &__content,
+  &__figure {
+    align-self: center;
+  }
+
+  &__content {
+    grid-area: content;
+    text-align: left;
+    padding: ($pad/2);
+  }
+
+  &__title {
+    color: var(--light);
+    font-weight: 700;
+  }
+
+  &__figure {
+    background-color: var(--light);
+    align-self: stretch;
+    display: grid;
+
+    @include breakpoint(md) {
+      grid-area: figure;
+    }
+
+    img {
+      place-self: center;
+    }
+  }
+}
+
+.main {
+  &__title,
+  &__description {
+    padding: 0 1rem;
+    color: var(--light);
+  }
+
+  &__title {
+    font-weight: 300;
+    text-align: center;
+    font-size: font-sizes(lg);
+
+    @include breakpoint(md) {
+      font-size: font-sizes(xl);
+    }
+
+    @include breakpoint(xl) {
+      font-size: font-sizes(xxl);
+    }
+  }
+
+  &__description {
+    text-align: left;
+    padding-bottom: 1rem;
+
+    @include breakpoint(md) {
+      text-align: center;
+    }
+
+    p {
+      //display: block;
+      margin: 0 auto;
+    }
+  }
+
+  &__figure {
+    background-color: var(--light);
+    margin: 2rem 0;
+    padding: 1rem;
+    text-align: center;
+
+    @include border(var(--primary));
+  }
+}
+
+.template-interior-short {
+  display: grid;
+  grid-template-rows: 1fr 7fr 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  height: 100vh;
+
+  header {
+    grid-area: header;
+  }
+
+  main {
+    grid-area: main;
+    display: grid;
+    grid-template-rows: auto;
+    padding: 1rem;
+
+    @include breakpoint(xl) {
+      min-height: 50vh;
+    }
+
+    @include breakpoint(md) {
+      grid-template-columns: 2fr 1fr;
+    }
+  }
+
+  footer {
+    grid-area: footer;
+  }
+
+  .main.left,
+  .main.right {
+    text-align: left;
+    background-color: var(--light);
+    margin-top: 7.5vh;
+    margin-bottom: 7.5vh;
+    color: var(--primary);
+
+    @include breakpoint(md) {
+      @include contain;
+    }
+  }
+
+  .main.left {
+    @include breakpoint(lg) {
+      grid-template-areas: "content secondary";
+    }
+  }
+
+  .main.right {
+    @include breakpoint(lg) {
+      grid-template-areas: "secondary content";
+    }
+  }
+
+  .section {
+    text-align: left;
+    margin-top: 0;
+    width: inherit;
+    display: block;
+
+    @include breakpoint(md) {
+      width: 100%;
+    }
+
+    @include breakpoint(xl) {
+      //
+    }
+
+    &__title {
+      font-weight: 300;
+    }
+
+    &__title,
+    &__content {
+      padding-left: $pad;
+      padding-right: $pad;
+    }
+
+    &__secondary {
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr auto-fit;
+      //align-self: stretch;
+
+      @include breakpoint(md) {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(3, 1fr);
+        //margin-bottom: 10vh;
+      }
+
+      .tile--multi {
+        grid-column: 1 / 3;
+
+        @include breakpoint(md) {
+          grid-column: 1;
+        }
+      }
+    }
+  }
+}
+
+.home {
+  background-color: var(--light);
+
+  .section__title,
+  .section__description {
+    color: var(--primary-dark);
+  }
+
+  .section.single {
+    background-color: var(--dark);
+    padding: 3rem 0;
+
+    @include breakpoint(lg) {
+      //
+    }
+
+    .section__title {
+      margin-top: 2rem;
+    }
+
+    .section__title,
+    .section__description {
+      color: var(--light);
+    }
+
+    .btns {
+      margin: 2rem auto;
+
+      @include breakpoint(lg) {
+        margin: 1rem auto;
+      }
+    }
+  }
+
+  .subsection {
+    grid-template-columns: 100%;
+    grid-template-rows: auto;
+
+    @include breakpoint(md) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .subsection--left {
+    @include breakpoint(md) {
+      grid-template-areas: "content figure";
+    }
+  }
+
+  .subsection--right {
+    @include breakpoint(md) {
+      grid-template-areas: "figure content";
+    }
+  }
+
+  .subsection__figure {
+    padding: 1rem;
+  }
+}

@@ -1,0 +1,65 @@
+.header {
+  background-color: var(--primary-dark);
+  position: relative;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+
+  @include breakpoint(md) {
+    grid-template-columns: 9fr 1fr;
+  }
+
+  @include breakpoint(xl) {
+    grid-template-columns: 1fr 4fr;
+    padding: 1rem;
+  }
+
+  .logo {
+    border-right: 2px solid var(--light);
+
+    @include breakpoint(xl) {
+      border-right: none;
+    }
+
+    &__img {
+      //place-self: center;
+      margin: 0.75rem;
+      max-width: $max-logo-width;
+    }
+  }
+}
+
+.nav {
+  list-style: none;
+  padding: 0;
+  align-self: center;
+
+  li {
+    display: inline-block;
+    margin: 0 1rem 0 0;
+    padding: 1rem;
+  }
+
+  &-primary {
+    display: none;
+
+    @include breakpoint(xl) {
+      align-self: stretch;
+      align-content: stretch;
+      justify-self: end;
+      display: grid;
+    }
+  }
+
+  &__mobile-toggle {
+    display: grid;
+    text-align: center;
+    color: var(--light);
+    //margin: 0 1rem;
+    place-self: center;
+
+    @include breakpoint(xl) {
+      display: none;
+    }
+  }
+}

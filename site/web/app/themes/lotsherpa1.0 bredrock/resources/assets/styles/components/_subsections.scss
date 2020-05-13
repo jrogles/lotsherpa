@@ -1,0 +1,113 @@
+.subsections {
+  margin-top: 15vh;
+  display: grid;
+
+  @include breakpoint(md) {
+    margin-top: 10vw;
+  }
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(auto-fill, minmax(0, 1fr));
+    margin: 1rem;
+    align-self: stretch;
+    grid-gap: 4vw;
+
+    @include breakpoint(md) {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    @include contain;
+  }
+}
+
+.subsection {
+  &__content {
+    //
+  }
+
+  &__title {
+    margin-top: 0;
+  }
+
+  &__copy {
+    //
+  }
+
+  &__figure {
+    padding: 5vw;
+
+    @include breakpoint(md) {
+      padding: 5vw;
+    }
+
+    @include breakpoint(xl) {
+      padding: 2vw;
+    }
+  }
+
+  &__img {
+    max-width: 50%;
+
+    @include breakpoint(md) {
+      max-width: 100%;
+    }
+
+    @include breakpoint(xl) {
+      width: 100%;
+      max-width: 325px;
+      max-height: 325px;
+    }
+  }
+
+  &-link {
+    display: grid;
+    grid-template-rows: repeat(4, auto-fill);
+    background-color: var(--light);
+    color: var(--primary);
+    //padding: 4vw;
+    place-self: stretch;
+    align-items: stretch;
+    //padding: 4vw;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &__title {
+      color: var(--primary);
+      //margin: 0.5rem;
+    }
+
+    &__subtitle {
+      font-size: 0.8rem;
+
+      @include breakpoint(lg) {
+        font-size: 0.9rem;
+      }
+    }
+
+    &__icon {
+      width: 100%;
+      max-height: 200px;
+      margin: 0;
+      padding: 1rem;
+      box-sizing: inherit;
+    }
+
+    &__desc {
+      display: none;
+    }
+
+    &__cta {
+      align-self: end;
+    }
+
+    &__title,
+    &__subtitle,
+    &__desc,
+    &__cta {
+      margin: 0.5rem;
+      text-align: center;
+    }
+  }
+}

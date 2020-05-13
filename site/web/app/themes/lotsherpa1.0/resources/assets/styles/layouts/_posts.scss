@@ -186,6 +186,11 @@
 
     .post__title {
       color: var(--light);
+      font-size: font-sizes(m);
+
+      @include breakpoint(xl) {
+        font-size: font-sizes(xl);
+      }
     }
 
     .post__date {

@@ -5,7 +5,7 @@
   </a>
   <div class="post__body">
     <h5 class="post__title">{{ the_title() }}</h5>
-    <p class="post__excerpt">{{ the_excerpt() }}</p>
+    <div class="post__excerpt">{{ the_excerpt() }}</div>
   </div>
   <div class="post__categories">
     @foreach (get_the_category() as $cat)
