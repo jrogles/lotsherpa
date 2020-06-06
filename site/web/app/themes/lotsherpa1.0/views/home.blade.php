@@ -14,7 +14,7 @@
 
     <div class="posts">
       @while (have_posts()) @php the_post() @endphp
-        @include('partials.content-'.get_post_type())
+        @includeWhen(!(has_term($featured_id,"category")) , 'partials.content-'.get_post_type())
       @endwhile
     </div>
 
@@ -24,11 +24,10 @@
   @if($featured_category)
   <div class="featured-posts__toggle btn btn--soft">{!! $featured_category->name !!}</div>
   <div class="featured-posts">
-    <h2 class="featured-posts__title">{!! $featured_category->name !!}</h2>
+    <h2 class="featured-posts__title">{!! $featured_name !!}</h2>
 
     <div class="posts">
-      @php $q = App::postQuery(6,$featured_category->term_id) @endphp
-      @foreach ( $q as $article )
+      @foreach ( $featured_posts as $article )
         @include('partials.post-condensed')
       @endforeach
     </div>
@@ -36,9 +35,6 @@
   @endif
 
   {!! get_the_posts_navigation() !!}
-
-
-
 
 @endsection
 

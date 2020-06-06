@@ -2,14 +2,26 @@
   position: relative;
   display: grid;
   grid-template-columns: 100%;
+  grid-template-areas:
+    "top"
+    "middle"
+    "bottom";
   place-self: center;
-  margin-top: 75px;
+  //margin-top: 75px;
+  background-color: var(--dark-a);
+  padding: 1rem;
+  margin: 1rem;
+  box-sizing: border-box;
 
   @include contain;
+  @include border(var(--dark));
 
   @include breakpoint(md) {
     margin: 5vh auto;
     grid-template-columns: 7fr 4fr;
+    grid-template-areas:
+      "left right"
+      "left btn";
     min-height: 40vh;
   }
 
@@ -22,72 +34,131 @@
   }
 
   &__figure {
-    position: absolute;
+    //position: absolute;
     display: block;
+    grid-area: middle;
     z-index: 1;
+    //margin: 0 1rem;
 
     @include breakpoint(md) {
       position: relative;
       display: grid;
       justify-self: end;
-      align-self: center;
-      z-index: 4;
+      align-self: stretch;
+      grid-area: left;
+      //z-index: 4;
     }
   }
 
-  &__img {
-    position: relative;
-    width: 100vw;
-    max-width: 100%;
-    margin-left: 7.5vw;
+  .figure__img {
+    height: unset;
+    max-height: unset;
   }
+
+  // &__img {
+  //   position: relative;
+  //   width: 100vw;
+  //   max-width: 100%;
+  //   margin-left: 7.5vw;
+  //   max-height: unset;
+  // }
 
   &__copy {
+    display: grid;
     position: relative;
-    background-color: var(--dark-a);
+    grid-area: top;
+    //background-color: var(--dark-a);
     align-self: stretch;
     justify-self: stretch;
-    padding: 2rem 1rem 1rem 2rem;
+    //padding: 1rem 1rem 1rem 2rem;
     color: var(--light);
     text-align: left;
-    z-index: 2;
+    //z-index: 2;
 
-    @include border(var(--dark));
+    //@include border(var(--dark));
+
+    @include breakpoint(md) {
+      grid-area: right;
+    }
 
     @include breakpoint(lg) {
-      padding: 3rem 3rem 3rem 5rem;
+      //padding: 3rem 3rem 3rem 5rem;
     }
 
-    &::before {
-      content: "";
+    // &::before {
+    //   content: "";
 
-      @include breakpoint(md) {
-        display: grid;
-        justify-self: stretch;
-        background-color: var(--primary);
-        width: 50vw;
-        height: 100%;
-        position: absolute;
-        top: -$border-size;
-        left: -50vw;
-        z-index: -10;
+    //   @include breakpoint(md) {
+    //     display: grid;
+    //     justify-self: stretch;
+    //     background-color: var(--primary);
+    //     width: 50vw;
+    //     height: 100%;
+    //     position: absolute;
+    //     top: -$border-size;
+    //     left: -50vw;
+    //     z-index: -10;
 
-        @include border(var(--dark));
-      }
-    }
+    //     @include border(var(--dark));
+    //   }
+    // }
 
     p {
-      margin: 3rem 0 1rem 0;
+      //margin: 3rem 0 1rem 0;
       line-height: $line-height;
-      font-size: (font-sizes(sm));
+      font-size: (font-sizes(sm) * 0.95 );
+      margin-bottom: 0.5rem;
 
       @include breakpoint(lg) {
         //font-size: (font-sizes(md) * 0.85);
+        font-size: font-sizes(md);
       }
 
-      &:last-child {
-        margin-top: 4rem;
+      &:first-child {
+        margin-top: 0.25rem;
+
+        @include breakpoint(md) {
+          margin-top: auto;
+        }
       }
+
+      // &:last-child {
+      //   margin-bottom: 0;
+
+      //   @include breakpoint(md) {
+      //     margin-bottom: inherit;
+      //   }
+      // }
+    }
+  }
+
+  .btns {
+    margin-top: 0;
+    margin-bottom: 0;
+    grid-area: bottom;
+
+    @include breakpoint(md) {
+      grid-area: btn;
+      //align-self: end;
+      //justify-self: end;
+    }
+
+    .btn {
+      @include breakpoint(md) {
+        padding: 0.5rem;
+      }
+
+      @include breakpoint(lg) {
+        padding: 1rem;
+      }
+    }
+
+    .btn:first-child {
+      margin-left: 0;
+    }
+
+    .btn:last-child {
+      margin-right: 0;
     }
   }
 }

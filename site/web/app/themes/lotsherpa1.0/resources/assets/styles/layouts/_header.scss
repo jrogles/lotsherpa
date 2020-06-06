@@ -1,10 +1,11 @@
 .header {
   background-color: var(--primary-dark);
+  border-bottom: 1px solid var(--light);
   display: grid;
   grid-template-areas: "logo";
   grid-template-columns: 1fr;
   grid-gap: 0.5rem;
-  position: fixed;
+  position: block;
   top: 0;
   width: 100%;
   z-index: 999;
@@ -15,6 +16,7 @@
 
   @include breakpoint(xl) {
     grid-template-columns: 1fr 4fr;
+    grid-template-areas: "logo nav";
   }
 
   .logo {
@@ -33,7 +35,9 @@
     list-style: none;
     margin: 0;
     padding: 1rem;
-    align-self: center;
+    align-self: stretch;
+    justify-self: end;
+    display: grid;
 
     li {
       display: block;
@@ -54,10 +58,10 @@
       overflow-y: scroll;
 
       @include breakpoint(xl) {
-        align-self: stretch;
-        align-content: stretch;
-        justify-self: end;
-        display: grid;
+        //align-self: stretch;
+        //align-content: stretch;
+        //justify-self: end;
+        display: flex;
         position: relative;
         top: initial;
         bottom: initial;

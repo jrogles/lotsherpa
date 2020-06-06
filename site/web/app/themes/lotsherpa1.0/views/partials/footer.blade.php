@@ -2,14 +2,14 @@
   <div class="footer__main">
     <div>
       <a class="footer__logo" href="{{ home_url('/') }}">
-        <img src="{{ get_theme_mod('upload_logo') }}"
-          alt="{{ get_bloginfo('name', 'display') }} Homepage"
+        <img src="{{ $customized_theme['logo'] }}"
+          alt="{{ get_bloginfo('name', 'display') ?? 'Lotsherpa' }} Homepage"
           class="logo logo--footer">
       </a>
       <div class="footer__contact">
-        <div>{{ get_theme_mod('phonenumber_humans') }}</div>
-        <div>{{ get_theme_mod('email_address') }}</div>
-        <div>{{ get_theme_mod('address') }}</div>
+        <div class="footer__contact-phone">{{ $customized_theme['phone'] }}</div>
+        <div class="footer__contact-email">{{ $customized_theme['email'] }}</div>
+        <div class="footer__contact-address">{{ $customized_theme['address'] }}</div>
       </div>
     </div>
     @if (has_nav_menu('footer_navigation'))
@@ -23,6 +23,6 @@
     @endif
   </div>
   <div class="footer__copyright">
-    Copyright {{ get_bloginfo('name', 'display') }} &copy;{{ get_the_date('Y') }}
+    Copyright {{ get_bloginfo('name', 'display') ?? 'Lotsherpa.com' }} &copy;{{ get_the_date('Y') }}
   </div>
 </footer>

@@ -10,12 +10,16 @@
 .btn {
   background-color: var(--primary-light);
   border: 2px solid var(--primary-light);
-  padding: 1rem;
-  margin: 0.5rem 0.25rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0.5rem 0.5rem;
   display: inline-block;
   border-radius: $border-size;
   font-weight: 600;
   transition: background-color 0.3s ease-in-out, border-color 0 ease-in-out, color 0.3s ease-in-out, border 0.3s ease-in-out;
+
+  @include breakpoint(md) {
+    padding: 1rem;
+  }
 
   @include breakpoint(lg) {
     margin: 1rem 2rem 1rem 0;
@@ -53,12 +57,10 @@
   }
 
   &--inverse {
-    border: 2px solid var(--primary-light);
     background-color: transparent;
     color: var(--primary-light);
 
     &:hover {
-      border: 2px solid var(--primary-light);
       background-color: var(--primary-light);
       color: var(--light);
     }

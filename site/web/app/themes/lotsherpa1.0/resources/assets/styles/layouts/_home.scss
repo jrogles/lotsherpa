@@ -53,16 +53,6 @@
     }
   }
 
-  .subsection__figure {
-    padding: 1rem;
-  }
-
-  .subsection__img {
-    @include breakpoint(xl) {
-      max-width: inherit;
-    }
-  }
-
   .feet {
     display: block;
     margin: 0 auto;
@@ -82,13 +72,21 @@
       }
     }
 
-    &__wrap[data-aos] {
+    &__wrap {
       position: relative;
       margin: 0 auto;
       display: block;
       padding: 1rem;
       transition-duration: 0.4s;
       max-width: 130px;
+    }
+  }
+
+  .segway {
+    margin-right: 33%;
+
+    .feet {
+      transform: rotate(45deg);
     }
   }
 
@@ -119,36 +117,17 @@
     margin-left: 25%;
 
     .feet {
-      transform: rotate(-30deg);
+      transform: rotate(-45deg);
     }
 
-    &.sub:nth-of-type(2) {
+    &.even {
       margin-left: auto;
       margin-right: 25%;
       margin-bottom: 2rem;
 
       .feet {
-        transform: rotate(30deg);
+        transform: rotate(45deg);
       }
     }
-  }
-
-  .feet.one {
-    transform: rotate(-10deg);
-  }
-
-  .feet.two {
-    transform: rotate(-20deg);
-    margin-right: 41.5%;
-  }
-
-  .feet.three {
-    transform: rotate(-35deg);
-    margin-right: 37%;
-  }
-
-  .feet.four {
-    transform: rotate(-30deg);
-    margin-left: 37%;
   }
 }

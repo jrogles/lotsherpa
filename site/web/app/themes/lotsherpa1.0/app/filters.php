@@ -102,3 +102,15 @@ add_filter('wp_nav_menu_objects', function ( $items, $args ) {
     return $items;
 }, 10, 2);
 
+/**
+ * add classes to post archive pagination
+ */
+
+add_filter('next_posts_link_attributes', function () {
+    return 'class="btn"';
+});
+
+
+add_filter('previous_posts_link_attributes', function () {
+    return 'class="btn btn--inverse"';
+});

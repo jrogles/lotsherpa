@@ -1,6 +1,15 @@
 <article class="post post--condensed">
   <a class="post__header" href="{{ get_permalink($article->ID) }}" target="_self">
-    {!! get_the_post_thumbnail($article) !!}
+    <img srcset="{!! get_the_post_thumbnail_url($article, 'medium') !!} 480w,
+             {!! get_the_post_thumbnail_url($article, 'medium_large') !!}  800w,
+             {!! get_the_post_thumbnail_url($article, 'large') !!} 1200w,
+             {!! get_the_post_thumbnail_url($article, 'full') !!} 1400w"
+
+     sizes="(max-width: 600px) 480px,
+            800px, 1200px, 1400px"
+     src="{!! get_the_post_thumbnail_url($article, 'medium') !!}"
+     alt="{!! get_post_meta( get_post_thumbnail_id(), '_wp_attachment_image_alt', true ) !!}"
+     class="wp-post-image">
     <div class="post__date">{{ get_the_date() }}</div>
   </a>
   <div class="post__body">

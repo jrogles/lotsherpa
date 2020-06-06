@@ -6,9 +6,9 @@
   @endif
 
   @if ($cmulti['subsections'])
-    @foreach($cmulti['subsections'] as $subsection)
+    @foreach($cmulti['subsections'] as $key => $subsection)
       @include('partials.home.content-subsection', $subsection)
-      <div class="feet__wrap sub"
+      <div class="feet__wrap {!! App::evenOdd($key) !!}"
         data-aos="feet"
         data-aos-offset="200"
         data-aos-easing="ease-in-out"

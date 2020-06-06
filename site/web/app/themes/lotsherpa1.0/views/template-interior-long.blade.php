@@ -38,3 +38,5 @@
     @endwhile
   </main>
 @endsection
+
+@php var_dump($content) @endphp

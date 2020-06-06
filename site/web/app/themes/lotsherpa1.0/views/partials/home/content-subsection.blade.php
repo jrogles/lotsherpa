@@ -6,8 +6,8 @@
       @include('partials.btns', ['section' => $subsection])
     </div>
   </div>
-  <a class="subsection__figure" href="{!! $subsection['cta']['url'] !!}">
-    <img src="{!! $subsection['icon']['url'] !!}"
-      alt="{!! $subsection['title'] !!}" class="subsection__img">
-  </a>
+  <!--<a class="subsection__figure" href="{!! $subsection['cta']['url'] !!}">-->
+    @include('partials.figure', ['figure' => $subsection['figure']])
+
+  <!--</a>-->
 </div>

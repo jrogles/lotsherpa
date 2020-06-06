@@ -137,5 +137,3 @@ function display_sidebar()
     return $display;
 }
 
-
-

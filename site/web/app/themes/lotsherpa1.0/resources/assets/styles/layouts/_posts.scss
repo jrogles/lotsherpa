@@ -28,8 +28,8 @@
   margin: 1rem 0;
   height: 400px;
   display: grid;
-  grid-template-columns: 70% 30%;
-  grid-template-rows: 45% 40% 15%;
+  grid-template-columns: 7fr 3fr;
+  grid-template-rows: 4.5fr 4fr 1.5fr;
   grid-template-areas:
     "header header"
     "body body"
@@ -42,14 +42,14 @@
 
   @include breakpoint(md) {
     max-height: 500px;
-    margin-left: 2rem;
-    margin-bottom: 2rem;
+    //margin-left: 2rem;
+    //margin-bottom: 2rem;
     grid-template-columns: 3fr 1fr;
     grid-template-rows: 200px auto;
   }
 
   @include breakpoint(xl) {
-    grid-template-rows: 50% 35% 15%;
+    grid-template-rows: 5fr 3.5fr 1.5fr;
   }
 
   &__header {
@@ -59,6 +59,18 @@
     text-align: center;
     overflow: hidden;
     padding: 1rem;
+
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-color: var(--dark-soft-a);
+      z-index: 1;
+    }
   }
 
   .wp-post-image {
@@ -74,15 +86,24 @@
   &__date {
     color: var(--light);
     position: absolute;
-    left: 0.5rem;
-    bottom: 0.5rem;
+    display: grid;
     z-index: 5;
+    //background-color: var(--primary-dark-a);
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    align-items: end;
+    justify-items: start;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
   }
 
   &__body {
     grid-area: body;
     padding: 0.25rem 1rem 1rem 1rem;
     background-color: #fff;
+    overflow: hidden;
   }
 
   &__excerpt,
@@ -105,6 +126,11 @@
     grid-row: 2;
     overflow: hidden;
     font-size: font-sizes(xs);
+
+    & p,
+    & li {
+      font-size: inherit;
+    }
   }
 
   &__categories {
@@ -172,13 +198,6 @@
       position: relative;
 
       &::before {
-        content: "";
-        display: block;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
         background-color: var(--primary-dark-a);
         z-index: 1;
       }

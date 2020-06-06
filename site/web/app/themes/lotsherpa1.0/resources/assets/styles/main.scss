@@ -10,8 +10,8 @@
  * @see https://github.com/webpack-contrib/sass-loader#imports
  */
 // @import "~some-node-module";
-//@import "~typeface-montserrat";
 @import "~aos/dist/aos";
+@import "~swiper/css/swiper";
 
 /** Import theme styles */
 @import "common/global";
@@ -21,6 +21,8 @@
 @import "components/comments";
 @import "components/forms";
 @import "components/wp-classes";
+@import "components/figure";
+@import "components/gallery";
 @import "components/tile";
 @import "layouts/header";
 @import "layouts/sidebar";

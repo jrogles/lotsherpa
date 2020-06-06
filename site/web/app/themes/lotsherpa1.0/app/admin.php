@@ -32,7 +32,7 @@ add_action('customize_register', function ( $wp_customize) {
   $wp_customize->add_setting(
     'primary_color',
     array(
-      'default' => '',
+      'default' => '#1e80c2',
       'sanitize_callback' => 'sanitize_hex_color',
       'transport' => 'postMessage'
     )
@@ -51,7 +51,7 @@ add_action('customize_register', function ( $wp_customize) {
   $wp_customize->add_setting(
     'primary_light_color',
     array(
-      'default' => '',
+      'default' => '#69cdf5',
       'sanitize_callback' => 'sanitize_hex_color',
       'transport' => 'postMessage'
     )
@@ -70,7 +70,7 @@ add_action('customize_register', function ( $wp_customize) {
   $wp_customize->add_setting(
     'primary_dark_color',
     array(
-      'default' => '',
+      'default' => '#224870',
       'sanitize_callback' => 'sanitize_hex_color',
       'transport' => 'postMessage'
     )
@@ -89,7 +89,7 @@ add_action('customize_register', function ( $wp_customize) {
   $wp_customize->add_setting(
     'accent1_color',
     array(
-      'default' => '',
+      'default' => '#ff6315',
       'sanitize_callback' => 'sanitize_hex_color',
       'transport' => 'postMessage'
     )
@@ -108,7 +108,7 @@ add_action('customize_register', function ( $wp_customize) {
   $wp_customize->add_setting(
     'accent2_color',
     array(
-      'default' => '',
+      'default' => '#6bffb8',
       'sanitize_callback' => 'sanitize_hex_color',
       'transport' => 'postMessage'
     )
@@ -127,7 +127,7 @@ add_action('customize_register', function ( $wp_customize) {
   $wp_customize->add_setting(
     'light_color',
     array(
-      'default' => '',
+      'default' => '#eaeaea',
       'sanitize_callback' => 'sanitize_hex_color',
       'transport' => 'postMessage'
     )
@@ -146,7 +146,7 @@ add_action('customize_register', function ( $wp_customize) {
   $wp_customize->add_setting(
     'dark_color',
     array(
-      'default' => '',
+      'default' => '#121a40',
       'sanitize_callback' => 'sanitize_hex_color',
       'transport' => 'postMessage'
     )
@@ -263,13 +263,6 @@ add_action('customize_register', function ( $wp_customize) {
   );
 });
 
-/**
- * Customizer JS
- */
-add_action('customize_preview_init', function () {
-    wp_enqueue_script('sage/customizer.js', asset_path('scripts/customizer.js'), ['customize-preview'], null, true);
-});
-
 function hex2rgba( $color, $opacity = false ) {
   $default = 'rgb( 0, 0, 0 )';
   if( empty( $color ) ) {
@@ -301,21 +294,53 @@ function hex2rgba( $color, $opacity = false ) {
 // Print styles
 function print_styles() {
 
-  $primary_color                             = hex2rgba(get_theme_mod('primary_color'));
-  $primary_light_color                       = hex2rgba(get_theme_mod('primary_light_color'));
-  $primary_dark_color                        = hex2rgba(get_theme_mod('primary_dark_color'));
-  $accent1_color                             = hex2rgba(get_theme_mod('accent1_color'));
-  $accent2_color                             = hex2rgba(get_theme_mod('accent2_color'));
-  $light_color                               = hex2rgba(get_theme_mod('light_color'));
-  $dark_color                                = hex2rgba(get_theme_mod('dark_color'));
+  $p = get_theme_mod('primary_color');
+  if (!$p) {
+    $p = '#1e80c2';
+  }
+  $pl = get_theme_mod('primary_light_color');
+  if (!$pl) {
+    $pl = '#69cdf5';
+  }
+  $pd = get_theme_mod('primary_dark_color');
+  if (!$pd) {
+    $pd = '#224870';
+  }
+  $a1 = get_theme_mod('accent1_color');
+  if (!$a1) {
+    $a1 = '#ff6315';
+  }
+  $a2 = get_theme_mod('accent2_color');
+  if (!$a2) {
+    $a2 = '#6bffb8';
+  }
+  $l = get_theme_mod('light_color');
+  if (!$l) {
+    $l = '#eaeaea';
+  }
+  $d = get_theme_mod('dark_color');
+  if (!$d) {
+    $d = '#121a40';
+  }
 
-  $primary_color_a                       = hex2rgba(get_theme_mod('primary_color'), 0.7);
-  $primary_light_color_a                       = hex2rgba(get_theme_mod('primary_light_color'), 0.8);
-  $primary_dark_color_a                        = hex2rgba(get_theme_mod('primary_dark_color'), 0.9);
-  $accent1_color_a                             = hex2rgba(get_theme_mod('accent1_color'), 0.8);
-  $accent2_color_a                             = hex2rgba(get_theme_mod('accent2_color'), 0.8);
-  $light_color_a                               = hex2rgba(get_theme_mod('light_color'), 0.8);
-  $dark_color_a                                = hex2rgba(get_theme_mod('dark_color'), 0.9);
+  $primary_color             = hex2rgba($p);
+  $primary_light_color       = hex2rgba($pl);
+  $primary_dark_color        = hex2rgba($pd);
+  $accent1_color             = hex2rgba($a1);
+  $accent2_color             = hex2rgba($a2);
+  $light_color               = hex2rgba($l);
+  $dark_color                = hex2rgba($d);
+
+  $primary_color_a           = hex2rgba($p, 0.7);
+  $primary_light_color_a     = hex2rgba($pl, 0.8);
+  $primary_dark_color_a      = hex2rgba($pd, 0.65);
+  $accent1_color_a           = hex2rgba($a1, 0.8);
+  $accent2_color_a           = hex2rgba($a2, 0.8);
+  $light_color_a             = hex2rgba($l, 0.8);
+  $dark_color_a              = hex2rgba($d, 0.9);
+  $dark_color_soft_a         = hex2rgba($d, 0.35);
+
+
   ?>
   <style>
     <?php if ($primary_color) { ?>
@@ -361,9 +386,17 @@ function print_styles() {
     <?php if ($dark_color_a) { ?>
     :root{--dark-a: <?= $dark_color_a; ?> !important;}
     <?php } ?>
+    <?php if ($dark_color_soft_a) { ?>
+    :root{--dark-soft-a: <?= $dark_color_soft_a; ?> !important;}
+    <?php } ?>
   </style>
   <?php
 }
 add_action('wp_head', __NAMESPACE__ . '\\print_styles');
 
-
+/**
+ * Customizer JS
+ */
+add_action('customize_preview_init', function () {
+    wp_enqueue_script('sage/customizer.js', asset_path('scripts/customizer.js'), ['customize-preview'], null, true);
+});
