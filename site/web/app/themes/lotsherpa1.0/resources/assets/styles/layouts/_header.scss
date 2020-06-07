@@ -5,18 +5,18 @@
   grid-template-areas: "logo";
   grid-template-columns: 1fr;
   grid-gap: 0.5rem;
-  position: block;
+  position: fixed;
   top: 0;
   width: 100%;
   z-index: 999;
 
   @include breakpoint(md) {
     position: relative;
+    grid-template-areas: "logo nav";
   }
 
   @include breakpoint(xl) {
     grid-template-columns: 1fr 4fr;
-    grid-template-areas: "logo nav";
   }
 
   .logo {
@@ -35,9 +35,7 @@
     list-style: none;
     margin: 0;
     padding: 1rem;
-    align-self: stretch;
-    justify-self: end;
-    display: grid;
+    align-self: center;
 
     li {
       display: block;
@@ -55,13 +53,13 @@
       top: 110vh;
       bottom: 0;
       width: 100vw;
-      overflow-y: scroll;
+      //overflow-y: scroll;
 
       @include breakpoint(xl) {
-        //align-self: stretch;
-        //align-content: stretch;
-        //justify-self: end;
-        display: flex;
+        align-self: stretch;
+        align-content: stretch;
+        justify-self: end;
+        display: grid;
         position: relative;
         top: initial;
         bottom: initial;

@@ -1,6 +1,6 @@
 @if ( App::svgCheck($img['url']) )
 <img
-     src="{{ $img['sizes']['medium'] }}"
+     src="{{ $img['url'] }}"
      alt="{{ $img['alt'] }}"
      class="figure figure__img figure__img--svg figure__img--{{ App::imgAspect( $img['url'] ) }}
      {{ $class ?? '' }}" />

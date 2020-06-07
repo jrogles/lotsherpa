@@ -23,6 +23,6 @@
     @endif
   </div>
   <div class="footer__copyright">
-    Copyright {{ get_bloginfo('name', 'display') ?? 'Lotsherpa.com' }} &copy;{{ get_the_date('Y') }}
+    &copy;{{ get_the_date('Y') }} {{ get_bloginfo('name', 'display') ?? 'Lotsherpa.com' }}
   </div>
 </footer>

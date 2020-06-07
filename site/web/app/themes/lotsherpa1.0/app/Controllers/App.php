@@ -140,6 +140,35 @@ class App extends Controller
             return "odd";
         }
     }
+
+    public static function getFeaturedImage () {
+      $thumb = array();
+      $thumb_id = get_post_thumbnail_id();
+      $url = get_the_post_thumbnail_url();
+
+      $args = array(
+        'post_type' => 'attachment',
+        'include' => $thumb_id
+      );
+
+      $thumbs = get_posts( $args );
+      if ( $thumbs ) {
+        // now create the new array
+        $thumb['url'] = $url;
+        $thumb['title'] = $thumbs[0]->post_title;
+        $thumb['description'] = $thumbs[0]->post_content;
+        $thumb['caption'] = $thumbs[0]->post_excerpt;
+        $thumb['alt'] = get_post_meta( $thumb_id, '_wp_attachment_image_alt', true );
+        $thumb['sizes'] = array(
+            'full' => wp_get_attachment_image_src( $thumb_id, 'full', false )
+        );
+        // add the additional image sizes
+        foreach ( get_intermediate_image_sizes() as $size ) {
+            $thumb['sizes'][$size] = wp_get_attachment_image_src( $thumb_id, $size, false );
+        }
+      } // end if
+      return $thumb;
+    }
 }
 
 

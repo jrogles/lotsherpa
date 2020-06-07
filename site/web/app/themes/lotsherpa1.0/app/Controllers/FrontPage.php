@@ -32,8 +32,13 @@ class FrontPage extends Controller
     return get_field('affiliates');
   }
 
-  public static function titleToId($object)
+  public static function titleToId($obj)
   {
-    return str_replace(' ', '-', strtolower($object['title']));
+    if (!$obj == null){
+      return str_replace(' ', '-', strtolower($obj));
+    } else {
+      return null;
+    }
+
   }
 }

@@ -30,8 +30,9 @@
 
     @if ( has_post_thumbnail() )
       <div class="main__figure" data-aos="fade-up">
-        <img src="{!! the_post_thumbnail_url() !!}"
-          alt="{!! get_the_post_thumbnail_caption() !!}">
+
+          @include('partials.img-srcset', ['img' => App::getFeaturedImage()])
+
       </div>
     @endif
 
@@ -39,4 +40,5 @@
   </main>
 @endsection
 
-@php var_dump($content) @endphp
+
+

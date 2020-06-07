@@ -13,7 +13,7 @@ class TemplateInteriorLong extends Controller
           'title' => $content['title'],
           'id' => str_replace(' ', '-', strtolower($content['title'])),
           'text' => $content['text'],
-          'icon' => $content['icon'],
+          'icon' => $content['jumplink']['icon'],
           'figure' => $content['figure'],
           'figure_side' => $content['figure_side'],
           'has_jumplink' => $content['has_jumplink'],
@@ -29,11 +29,13 @@ class TemplateInteriorLong extends Controller
       return get_field('disclosures');
     }
 
-    public static function hasJumplinks($contentsArr) {
-     if (null !== array_search(True, array_column($contentsArr, 'has_jumplink'))){
+    public static function hasJumplinks($contentsArr)
+    {
+      $search = array_search(True, array_column($contentsArr, 'has_jumplink'));
+     if ($search) {
       return true;
      }
      else {return false;}
-    }
+  }
 
 }

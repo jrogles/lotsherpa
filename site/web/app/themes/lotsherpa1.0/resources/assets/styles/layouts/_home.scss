@@ -43,13 +43,13 @@
 
   .subsection--left {
     @include breakpoint(md) {
-      grid-template-areas: "content figure";
+      grid-template-areas: "figure content";
     }
   }
 
   .subsection--right {
     @include breakpoint(md) {
-      grid-template-areas: "figure content";
+      grid-template-areas: "content figure";
     }
   }
 

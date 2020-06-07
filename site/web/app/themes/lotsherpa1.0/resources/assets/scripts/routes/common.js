@@ -90,6 +90,80 @@ export default {
             },
             lazy: true,
             preloadImages: false,
+            on: {
+              observerUpdate: function () {
+                AOS.refresh();
+              },
+              init: function () {
+                AOS.refresh();
+              },
+            },
+
+          });
+
+          newSwiper.update();
+
+      });
+
+      //galleries via swiperjs
+      $('.swiper-container--hero').each(function () {
+          var $this = $(this);
+          var classes = $this.prop('className').split(/\s+/);
+          var slideEffect;
+
+          //get effect class from html
+          classes.forEach(function (item) {
+            if (item.indexOf('effect') >= 0) {
+              slideEffect = item.replace(/swiper-/,'').replace(/effect-/,'');
+            }
+          });
+
+          //console.log(slideEffect);
+
+          var newSwiper = new Swiper(this, {
+            // Optional parameters
+            observer: true,
+            observeParents: true,
+            centeredSlides: true,
+            centeredSlidesBounds: true,
+            roundLengths: false,
+            slidesPerView: 1,
+            direction: 'horizontal',
+            loop: true,
+            watchSlidesVisibilty: true,
+            uniqueNavElements: true,
+            effect: slideEffect,
+            fadeEffect: {
+              crossFade: true,
+            },
+            coverflowEffect: {
+              rotate: 50,
+              slideShadows: false,
+            },
+            navigation: {
+              nextEl: '.swiper-button-next',
+              prevEl: '.swiper-button-prev',
+              hideOnClick: true,
+            },
+            pagination: {
+              el: '.swiper-pagination',
+              type: 'bullets',
+              clickable: 'true',
+            },
+            calculateHeight: true,
+            autoplay: {
+              delay: 5000,
+            },
+            lazy: true,
+            preloadImages: true,
+            on: {
+              observerUpdate: function () {
+                AOS.refresh();
+              },
+              init: function () {
+                AOS.refresh();
+              },
+            },
 
           });
 

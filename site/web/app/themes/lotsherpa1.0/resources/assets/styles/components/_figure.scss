@@ -51,6 +51,7 @@
     max-width: 100%;
     height: auto;
     max-height: 33vh;
+    margin: 0 auto;
 
     @include breakpoint(xl) {
       //max-width: inherit;
