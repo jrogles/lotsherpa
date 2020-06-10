@@ -32,7 +32,7 @@ class TemplateInteriorLong extends Controller
     public static function hasJumplinks($contentsArr)
     {
       $search = array_search(True, array_column($contentsArr, 'has_jumplink'));
-     if ($search) {
+     if ($search !== FALSE) {
       return true;
      }
      else {return false;}

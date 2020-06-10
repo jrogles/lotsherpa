@@ -1,4 +1,4 @@
-<div class="figure swiper-container{{ $location ?? ''}}
+<div class="figure swiper-container{{ $location ?? '' }}
   swiper-effect-{{ $gallery['transition_type'] }}">
     <div class="swiper-wrapper gallery">
         @foreach($gallery['gallery_images'] as $slide)

@@ -34,7 +34,7 @@ class FrontPage extends Controller
 
   public static function titleToId($obj)
   {
-    if (!$obj == null){
+    if ($obj !== null || $obj !== ''){
       return str_replace(' ', '-', strtolower($obj));
     } else {
       return null;

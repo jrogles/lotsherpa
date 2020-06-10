@@ -67,38 +67,55 @@
     margin-left: auto;
     margin-right: auto;
     padding: ($pad/2);
+
+    @include breakpoint(xl) {
+      padding: 0;
+    }
   }
 
   &__title {
     color: var(--light);
     font-weight: 700;
-    margin-top: 0;
+    //margin-top: 0;
   }
 
-  .figure {
+  &__figure {
     background-color: var(--light);
-    align-self: stretch;
     display: grid;
-    padding: 5vw;
 
     @include breakpoint(md) {
       grid-area: figure;
       // padding: 5vw;
     }
+  }
+
+  .figure {
+    padding: 5vw;
 
     @include breakpoint(xl) {
       padding: 2vw;
     }
-  }
 
-  &__img {
-    place-self: center;
-    width: 100%;
-    //max-height: 165px;
+    &__img {
+      margin: 0;
+      place-self: stretch;
+      width: 100%;
+      //height: 100%;
+      //max-height: 165px;
 
-    @include breakpoint(xl) {
-      // max-width: 325px;
-      // max-height: 325px;
+      @include breakpoint(xl) {
+        place-self: center;
+        max-width: 300px;
+        max-height: 300px;
+      }
+
+      &--svg {
+        @include breakpoint(xl) {
+          place-self: center;
+          max-width: 300px;
+          max-height: 300px;
+        }
+      }
     }
   }
 
@@ -112,7 +129,10 @@
     align-items: stretch;
     box-sizing: border-box;
     cursor: pointer;
-    overflow: hidden;
+
+    &:hover {
+      border-bottom: none;
+    }
 
     &__title {
       color: var(--primary);
@@ -129,11 +149,11 @@
     }
 
     &__icon {
-      width: 100%;
-      max-height: 200px;
+      //width: 100%;
+      //max-height: 200px;
       margin: 0;
       padding: 1rem;
-      box-sizing: border-box;
+      //box-sizing: border-box;
     }
 
     &__desc {

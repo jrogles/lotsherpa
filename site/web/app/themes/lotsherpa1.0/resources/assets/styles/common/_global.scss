@@ -16,7 +16,14 @@ img {
 }
 
 svg {
+  height: auto;
   width: fit-content;
   max-width: 100%;
 }
 
+.wpsvg-inline {
+  text-align: center;
+  height: 100%;
+  place-items: center;
+  //max-width: 100%;
+}

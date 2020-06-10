@@ -1,6 +1,10 @@
 .home {
   background-color: var(--light);
 
+  .content {
+    margin-bottom: 0;
+  }
+
   .section__title,
   .section__description {
     color: var(--primary-dark);
@@ -34,7 +38,7 @@
 
   .subsection {
     grid-template-columns: 100%;
-    grid-template-rows: auto;
+    grid-template-rows: 33vh;
 
     @include breakpoint(md) {
       grid-template-columns: 1fr 1fr;

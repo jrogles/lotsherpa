@@ -4,12 +4,13 @@
 }
 
 .content {
-  margin-top: 85px;
-  padding-top: 2rem;
+  margin-top: 6vh;
+  margin-bottom: 6vh;
   width: 100%;
+  //background-color: var(--light);
 
   @include breakpoint(md) {
-    margin-top: 0;
+    //margin-top: 0;
   }
 }
 
@@ -23,6 +24,7 @@
   }
 
   &__title {
+    margin-top: 0;
     font-weight: 300;
     text-align: center;
     font-size: font-sizes(lg);

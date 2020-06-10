@@ -1,5 +1,5 @@
 <section class="section" data-aos="fade-up"
-  id="{{ FrontPage::titleToId($blog['title']) ?? 'blog' }}">
+  id="{{ FrontPage::titleToId($blog['title']  ?? 'blog') }}">
   <h2 class="section__title">{{ $blog['title'] ?? 'Blog' }}</h2>
   @if (!empty($blog['description']))
   <p class="section__description">{{ $blog['description'] }}</p>

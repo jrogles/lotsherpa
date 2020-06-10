@@ -1,5 +1,5 @@
 <section class="section"
-  id="{{ FrontPage::titleToId($cmulti['title']) ?? 'services' }}">
+  id="{{ FrontPage::titleToId($cmulti['title'] ?? 'services') }}">
   <h2 class="section__title">{{ $cmulti['title'] ?? 'Services' }}</h2>
   @if (!$cmulti['description'] == '')
   <p class="section__description">{{ $cmulti['description'] }}</p>

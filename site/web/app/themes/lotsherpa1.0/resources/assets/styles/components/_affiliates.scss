@@ -1,7 +1,7 @@
 .affiliates {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, max(20vw));
-  grid-gap: 5vw;
+  //display: grid;
+  // grid-template-columns: repeat(auto-fit, max(20vw));
+  // grid-gap: 5vw;
   justify-content: center;
   height: 25vh;
   background-repeat: no-repeat;
@@ -10,8 +10,13 @@
   background-position-y: 101%;
 
   @include breakpoint(lg) {
-    grid-template-columns: repeat(auto-fit, max(10vw));
     margin-top: 0;
+  }
+
+  .swiper-container--affiliates {
+    @include contain;
+
+    overflow: hidden;
   }
 
   .affiliate {

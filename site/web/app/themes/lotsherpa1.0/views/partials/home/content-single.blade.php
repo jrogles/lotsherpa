@@ -7,6 +7,9 @@
       <div class="id-card__text">{!! $csingle['icon']['text'] !!}</div>
     </div>
     <p class="section__description">{{ $csingle['description'] }}</p>
-    @include('partials.btns', ['section' => $csingle])
+
+    @if ($csingle['cta_primary'] !== '' || $csingle['cta_secondary'] !== '')
+      @include('partials.btns', ['section' => $csingle])
+    @endif
   </div>
 </section>

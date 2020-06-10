@@ -97,38 +97,48 @@ class App extends Controller
     }
 
     public static function svgCheck(  $path ) {
-        $extension = pathinfo($path)['extension'];
-        if ($extension == 'svg') {
-            return true;
+        if ($path) {
+            $extension = pathinfo($path)['extension'];
+            if ($extension == 'svg') {
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
     }
 
     public static function imgAspect(  $path ) {
-        $p = "http://" . $_SERVER['HTTP_HOST'] .$path;
-        $svgFlag = App::svgCheck($path);
-        $specs;
-        $ratio;
+        if ($path) {
+            $p = "http://" . $_SERVER['HTTP_HOST'] .$path;
+            $svgFlag = App::svgCheck($path);
+            $specs;
+            $ratio;
 
 
-        if ($svgFlag) {
-            $specs = simplexml_load_file($p)->attributes();
-            $viewBox = explode(" ",$specs->viewBox);
-             //var_dump($viewBox);
-            //$ratio = ($specs->width / $specs->height);
-             $ratio = ($viewBox[2] / $viewBox[3]);
-        } else {
-            $specs = getimagesize($p);
-            $ratio = ($specs[0] / $specs[1]);
-        }
+            if ($svgFlag) {
+                $specs = simplexml_load_file($p)->attributes();
+                $vb = $specs->viewBox;
+                $viewBox = explode(" ",$vb);
 
-        if ($ratio > 1.2) {
-            return 'landscape ';
-        } elseif ($ratio < 0.8) {
-            return 'portrait ';
-        } else {
-            return 'square ';
+                if ($vb) {
+                    $ratio = ($viewBox[2] / $viewBox[3]);
+                } else {
+                    $ratio = ($specs[0] / $specs[1]);
+                }
+            } else {
+                $specs = getimagesize($p);
+                $ratio = ($specs[0] / $specs[1]);
+            }
+
+            if ($ratio > 1.2) {
+                return 'landscape ';
+            } elseif ($ratio < 0.8) {
+                return 'portrait ';
+            } else {
+                return 'square ';
+            }
         }
     }
 

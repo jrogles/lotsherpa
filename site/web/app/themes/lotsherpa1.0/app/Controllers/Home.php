@@ -15,12 +15,22 @@ class Home extends Controller
 
   public function featuredId()
   {
-    return $this->featuredCategory()->term_id;
+    $cat = $this->featuredCategory();
+    if ($cat !== null) {
+      return $cat->term_id;
+    }
+
+
   }
 
   public function featuredName()
   {
-    return $this->featuredCategory()->name;
+    $cat = $this->featuredCategory();
+    if ($cat !== null) {
+      return $cat->name;
+    }
+
+
   }
 
   public function featuredPosts() {

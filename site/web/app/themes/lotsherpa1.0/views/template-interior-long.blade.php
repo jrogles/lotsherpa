@@ -25,14 +25,14 @@
         @foreach($contents as $content)
           @include('partials.subsection', $content)
         @endforeach
-      </div>
-    @endif
 
-    @if ( has_post_thumbnail() )
-      <div class="main__figure" data-aos="fade-up">
+        @if ( has_post_thumbnail() )
+          <div class="main__figure">
 
-          @include('partials.img-srcset', ['img' => App::getFeaturedImage()])
+              @include('partials.img-srcset', ['img' => App::getFeaturedImage()])
 
+          </div>
+        @endif
       </div>
     @endif
 

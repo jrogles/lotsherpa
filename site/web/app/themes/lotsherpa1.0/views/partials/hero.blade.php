@@ -3,16 +3,16 @@
     <div class="hero__copy">
       {!! $hero['text'] !!}
 
-      @include('partials.btns', ['section' => $hero])
+      @if ($hero['cta_primary'] !== '' || $hero['cta_secondary'] !== '')
+        @include('partials.btns', ['section' => $hero])
+      @endif
     </div>
 
     <div class="hero__figure {{ $hero['figure']['image_or_gallery'] }}">
       @if ($hero['figure']['image_or_gallery'] == 'image')
-      <img src="{{ $hero['figure']['image']['url'] }}"
-        alt="{{ $hero['figure']['image']['alt'] }}"
-        class="hero__img">
+        @include('partials.img-srcset', ['img' => $hero['figure']['image'], 'class' => 'hero__img'])
       @else
-        @include('partials.gallery.gallery', ['gallery' => $hero['figure']['gallery'], 'location' => '--hero'])
+        @include('partials.gallery.gallery-location', ['gallery' => $hero['figure']['gallery'], 'location' => '--hero'])
       @endif
     </div>
 
