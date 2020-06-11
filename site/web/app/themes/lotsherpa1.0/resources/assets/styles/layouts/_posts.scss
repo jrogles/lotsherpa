@@ -262,6 +262,10 @@
     @include contain;
   }
 
+  &__header {
+    color: var(--light);
+  }
+
   .post {
     margin: 1rem 0 0 0;
 

@@ -24,7 +24,7 @@
 
 @if($related_posts)
 <div class="related-posts__wrap">
-  <h6>Related Posts</h6>
+  <h6 class="related-posts__header">Related Posts</h6>
   <div class="related-posts">
     @foreach ( $related_posts as $article )
       @include('partials.post-condensed')
