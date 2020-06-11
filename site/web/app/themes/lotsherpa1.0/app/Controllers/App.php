@@ -65,7 +65,7 @@ class App extends Controller
                 'logo' => $initlogo,
                 'address' => '5000 UpdateMe Ave, St. Louis, MO 12345',
                 'phone' => '123.321.1234',
-                'phone_comp' => '+11233211234',
+                'phone_r' => '+11233211234',
                 'email' => 'test@test.test',
             ];
 
@@ -76,22 +76,41 @@ class App extends Controller
     public function customizedTheme()
     {
         $fallback = App::customizerFallback();
-        $mods = get_theme_mods()[0];
-        $logo;
-            if ( !isset($mods['upload_logo']) ) {
-                $logo = $fallback['logo'];
-            } else {
-                $logo = $mods['upload_logo'];
-            }
+        $mods = get_theme_mods();
+        $logo = $mods['upload_logo'];
+        $address = $mods['address'];
+        $phone = $mods['phonenumber_humans'];
+        $phoneR = $mods['phonenumber_robots'];
+        $email = $mods['email_address'];
+
+        if (!isset($logo) ) {
+            $logo = $fallback['logo'];
+        }
+
+        if ( !isset($address) ) {
+            $address = $fallback['address'];
+        }
+
+        if ( !isset($phone) ) {
+            $phone = $fallback['phone'];
+        }
+
+        if ( !isset($phoneR) ) {
+            $phoneR = $fallback['phone_r'];
+        }
+
+        if ( !isset($email) ) {
+            $email = $fallback['email'];
+        }
 
           return [
              'logo' => $logo,
               'logo_id' => attachment_url_to_postid($logo),
               'logo_ext' => pathinfo($logo, PATHINFO_EXTENSION),
-              'address' => $mods['address'] ?? $fallback['address'],
-              'phone' => $mods['phonenumber_humans'] ?? $fallback['phone'],
-              'phone_comp' => $mods['phonenumber_robots'] ?? $fallback['phone_comp'],
-              'email' => $mods['email_address'] ?? $fallback['email'],
+              'address' => $address,
+              'phone' =>  $phone,
+              'phone_r' => $phoneR,
+              'email' => $email,
           ];
 
     }

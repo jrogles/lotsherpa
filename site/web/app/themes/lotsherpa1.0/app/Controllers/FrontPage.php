@@ -17,6 +17,14 @@ class FrontPage extends Controller
     return get_field('cmulti');
   }
 
+  public function subNum()
+  {
+    $multi = get_field('cmulti');
+    if ($multi) {
+      return count($multi['subsections']);
+    }
+  }
+
   public function blog()
   {
     return get_field('blog');

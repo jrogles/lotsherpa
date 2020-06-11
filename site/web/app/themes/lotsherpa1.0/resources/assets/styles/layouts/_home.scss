@@ -11,7 +11,11 @@
   }
 
   .section {
-    margin-top: 0;
+    margin-top: 3.5vh;
+
+    &:first-child {
+      margin-top: 0;
+    }
   }
 
   .section.single {
@@ -90,14 +94,6 @@
     }
   }
 
-  .segway {
-    margin-right: 33%;
-
-    .feet {
-      transform: rotate(45deg);
-    }
-  }
-
   .aos-animate .feet {
     display: block;
 
@@ -116,6 +112,34 @@
         .c {
           transition-delay: 0.4s;
         }
+      }
+    }
+  }
+
+  .transition {
+    margin: auto;
+
+    &--odd {
+      &:first-of-type {
+        margin-right: 35%;
+      }
+
+      margin-right: 43%;
+
+      .feet {
+        transform: rotate(45deg);
+      }
+    }
+
+    &--even {
+      &:first-of-type {
+        margin-left: 35%;
+      }
+
+      margin-left: 43%;
+
+      .feet {
+        transform: rotate(-45deg);
       }
     }
   }

@@ -9,7 +9,9 @@
 
 
       @includeWhen($cmulti, 'partials.home.content-multi')
-      @includeWhen($cmulti, 'partials.feet', ['amount' => 2, 'offset' => 300])
+      <div>
+        @includeWhen($cmulti, 'partials.feet', ['amount' => 2, 'offset' => 300, 'class' => 'transition--'. App::evenOdd($sub_num)])
+      </div>
 
 
       @includeWhen($blog, 'partials.home.content-blog')

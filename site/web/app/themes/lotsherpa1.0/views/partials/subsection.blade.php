@@ -5,7 +5,9 @@
     <div class="subsection__copy">{!! $text !!}</div>
   </div>
 
-  <div class="subsection__figure">
+
     @includeWhen($figure, 'partials.figure', ['figure' => $figure])
-  </div>
+
+
+
 </div>

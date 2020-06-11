@@ -1,5 +1,5 @@
 @if ( App::svgCheck($img['url']) )
-<div data-aos="fade-up" class="figure figure__img figure__img--svg figure__img--{{ App::imgAspect( $img['url'] ) }} {{ $class ?? '' }}">
+<div data-aos="fade-up" class=" {{ $class ?? '' }}">
     <?= do_shortcode( sprintf( '[wpsvg_inline id="%s"]', $img['ID'] ?? $img['Id'] ) ); ?>
 </div>
 @else
@@ -12,8 +12,7 @@
             800px, 1200px, 1400px"
      src="{{ $img['sizes']['medium'][0] }}"
      alt="{{ $img['alt'] }}"
-     class="figure figure__img figure__img--{{ App::imgAspect( $img['sizes']['full'][0] ) }}
-     {{ $class ?? '' }}"
+     class="{{ $class ?? '' }}"
      data-aos="fade-up" />
 @endif
 

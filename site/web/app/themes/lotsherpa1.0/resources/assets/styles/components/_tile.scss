@@ -12,19 +12,21 @@
     color: var(--primary);
   }
 
-  &__img {
+  .figure {
     margin-top: 1rem;
-    max-width: 200px;
+    max-height: 200px;
   }
 
   &--multi {
     background-color: var(--primary-light);
     display: grid;
+    align-self: center;
     grid-template-areas:
       "title cta1"
       "title cta2";
     grid-template-rows: 1fr 1fr;
     margin-top: 3rem;
+    //max-height: 300px;
 
     @include breakpoint(md) {
       margin-top: 0;
@@ -66,11 +68,11 @@
     }
 
     &__img {
-      margin: 1rem;
+      margin: 2rem;
       width: 50px;
 
       @include breakpoint(md) {
-        margin: initial;
+        //margin: initial;
       }
     }
   }

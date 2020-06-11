@@ -1,9 +1,9 @@
 <div class="swiper-slide">
 @if ( App::svgCheck($slide['url']) )
-<img
-     data-src="{{ $slide['sizes']['medium'] }}"
-     alt="{{ $slide['alt'] }}"
-     class="figure__img figure__svg figure__img--{{ App::imgAspect( $slide['url'] ) }} swiper-lazy" />
+    <div class="figure__img figure__svg figure__img--{{ App::imgAspect( $slide['url'] ) }} swiper-lazy">
+        <?= do_shortcode( sprintf( '[wpsvg_inline id="%s"]', $slide['ID'] ?? $slide['Id'] ) ); ?>
+    </div>
+
      <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 @else
   <img data-srcset="{{ $slide['sizes']['medium'] }} 480w,
@@ -18,3 +18,4 @@
      <div class="swiper-lazy-preloader swiper-lazy-preloader-white"></div>
 @endif
 </div>
+
