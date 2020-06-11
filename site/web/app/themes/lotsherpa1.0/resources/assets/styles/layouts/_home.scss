@@ -43,6 +43,10 @@
     @include breakpoint(md) {
       grid-template-columns: 1fr 1fr;
     }
+
+    .figure {
+      background-color: var(--light);
+    }
   }
 
   .subsection--left {

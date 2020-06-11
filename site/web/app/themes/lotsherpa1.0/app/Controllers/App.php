@@ -132,9 +132,9 @@ class App extends Controller
                 $ratio = ($specs[0] / $specs[1]);
             }
 
-            if ($ratio > 1.2) {
+            if ($ratio > 1.1) {
                 return 'landscape ';
-            } elseif ($ratio < 0.8) {
+            } elseif ($ratio < 0.9) {
                 return 'portrait ';
             } else {
                 return 'square ';
@@ -164,6 +164,7 @@ class App extends Controller
       $thumbs = get_posts( $args );
       if ( $thumbs ) {
         // now create the new array
+        $thumb['ID'] = $thumb_id;
         $thumb['url'] = $url;
         $thumb['title'] = $thumbs[0]->post_title;
         $thumb['description'] = $thumbs[0]->post_content;
