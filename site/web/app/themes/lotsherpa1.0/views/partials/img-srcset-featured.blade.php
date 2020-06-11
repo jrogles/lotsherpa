@@ -15,5 +15,3 @@
      class="{{ $class ?? '' }}"
      data-aos="fade-up" />
 @endif
-
-

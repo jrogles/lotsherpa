@@ -1,7 +1,4 @@
 .affiliates {
-  //display: grid;
-  // grid-template-columns: repeat(auto-fit, max(20vw));
-  // grid-gap: 5vw;
   justify-content: center;
   height: 25vh;
   background-repeat: no-repeat;
@@ -36,6 +33,10 @@
 
     &__icon {
       width: 90%;
+    }
+
+    .figure {
+      padding: 0;
     }
   }
 }

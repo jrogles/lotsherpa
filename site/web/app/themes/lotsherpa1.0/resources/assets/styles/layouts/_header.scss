@@ -148,6 +148,10 @@
     .nav__mobile-toggle {
       transition: all 0.2s ease-in-out;
     }
+
+    ~ #wpadminbar.mobile {
+      top: 80vh;
+    }
   }
 }
 

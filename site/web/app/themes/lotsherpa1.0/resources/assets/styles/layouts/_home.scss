@@ -42,10 +42,11 @@
 
   .subsection {
     grid-template-columns: 100%;
-    grid-template-rows: 33vh;
+    grid-template-rows: 50vh;
 
     @include breakpoint(md) {
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 33vh;
     }
 
     .figure {

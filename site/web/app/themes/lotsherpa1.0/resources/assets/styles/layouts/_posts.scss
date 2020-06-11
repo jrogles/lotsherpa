@@ -194,7 +194,8 @@
     display: block;
 
     .post__header {
-      height: 16vh;
+      padding: 0;
+      height: auto;
       text-align: left;
       position: relative;
 
@@ -202,10 +203,17 @@
         background-color: var(--primary-dark-a);
         z-index: 1;
       }
+
+      @include breakpoint(lg) {
+        padding: 1rem;
+        height: 16vh;
+      }
     }
 
     .post__title {
       color: var(--light);
+      margin: 2rem 0  0.5rem 0;
+      padding: 0 0.7rem;
       font-size: font-sizes(m);
 
       @include breakpoint(xl) {
@@ -272,3 +280,8 @@
     }
   }
 }
+
+.wp-block-image {
+  text-align: center;
+}
+

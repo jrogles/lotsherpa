@@ -1,13 +1,14 @@
 .error404 {
   h1 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
+    margin-top: 0;
   }
 
   h1,
   p {
     padding: 0 1rem;
     text-align: center;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .search-form {
@@ -19,22 +20,22 @@
 .svg404 {
   width: 100vw;
   display: block;
-  margin: -2rem auto 5vh auto;
+  margin: 1rem auto;
 
   @include breakpoint(xl) {
-    margin: -5vh auto 5vh auto;
+    margin: 2rem auto;
     width: 75vw;
-    max-width: 1300px;
+    max-width: 1000px;
   }
 
-  #CHARACTER {
+  [data-name="CHARACTER"] {
     overflow: hidden;
     box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.6);
     transform: translateY(0);
     animation: float 6s ease-in-out infinite;
   }
 
-  #SPARKLES {
+  [data-name="SPARKLES"] {
     path:nth-of-type(n) {
       animation: glimmer 3s ease-in-out infinite;
     }
