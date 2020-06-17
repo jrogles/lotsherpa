@@ -243,5 +243,10 @@ export default {
     }, 5);
 
     AOS.refresh();
+
+    window.addEventListener('load', () => {
+      // Resize refreshes sliders
+      $(window).resize();
+    }, false);
   },
 };
