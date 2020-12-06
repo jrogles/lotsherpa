@@ -77,11 +77,11 @@ class App extends Controller
     {
         $fallback = App::customizerFallback();
         $mods = get_theme_mods();
-        $logo = $mods['upload_logo'];
-        $address = $mods['address'];
-        $phone = $mods['phonenumber_humans'];
-        $phoneR = $mods['phonenumber_robots'];
-        $email = $mods['email_address'];
+        $logo = $mods['upload_logo'] ?? $fallback['logo'];
+        $address = $mods['address'] ?? $fallback['address'];
+        $phone = $mods['phonenumber_humans'] ?? $fallback['phone'];
+        $phoneR = $mods['phonenumber_robots'] ?? $fallback['phone_r'];
+        $email = $mods['email_address'] ?? $fallback['email'];
 
         if (!isset($logo) ) {
             $logo = $fallback['logo'];
@@ -130,11 +130,11 @@ class App extends Controller
 
     public static function imgAspect(  $path ) {
         if ($path) {
-            $p = "http://" . $_SERVER['HTTP_HOST'] .$path;
+            // $p = "http://" . $_SERVER['HTTP_HOST'] .$path;
+            $p = $path;
             $svgFlag = App::svgCheck($path);
             $specs;
             $ratio;
-
 
             if ($svgFlag) {
                 $specs = simplexml_load_file($p)->attributes();

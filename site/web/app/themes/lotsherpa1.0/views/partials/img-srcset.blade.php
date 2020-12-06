@@ -12,7 +12,7 @@
      sizes="(max-width: 600px) 480px,
             800px, 1200px, 1400px"
      src="{{ $img['sizes']['medium'] }}"
-     alt="{{ $img['alt'] }}"
+     alt="{{ $img['alt'] ?? '' }}"
      class="figure__img figure__img--{{ App::imgAspect( $img['url'] ) }}
      {{ $class ?? '' }}" />
 @endif

@@ -3,7 +3,7 @@
     <a class="affiliate"
       title="{{ $affiliate['name'] }}"
       href="{{ $affiliate['link']['url'] }}"
-      target="{{ $affiliate['link']['target'] }}">
+      target="_blank">
   @endif
 
   @include('partials.img-srcset', ['img' => $affiliate['icon'], 'class' => 'affiliate__icon'])

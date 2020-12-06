@@ -28,10 +28,10 @@
     place-self: center;
 
     p {
-      font-size: 0.7rem;
+      font-size: 0.55rem;
       margin-right: 0.5rem;
 
-      @include breakpoint(lg) {
+      @include breakpoint(md) {
         font-size: inherit;
       }
     }

@@ -114,3 +114,9 @@ add_filter('next_posts_link_attributes', function () {
 add_filter('previous_posts_link_attributes', function () {
     return 'class="btn btn--inverse"';
 });
+
+/** include ACF PRO **/
+/** get  the fields **/
+include(get_template_directory() . '/includes/acf-fields/lotsherpa.php' );
+
+add_filter('acf/settings/show_admin', '__return_false');

@@ -33,6 +33,11 @@
 
     &__icon {
       width: 90%;
+      max-width: 250px;
+
+      @include breakpoint(xxl) {
+        max-width: unset;
+      }
     }
 
     .figure {

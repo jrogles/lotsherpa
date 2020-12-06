@@ -32,19 +32,22 @@
 
 .subsection {
   margin-bottom: 5vh;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: auto;
-  grid-template-areas:
-    "content"
-    "figure";
+  display: block;
+  // grid-template-columns: 100%;
+  // grid-template-rows: auto;
+  // grid-template-areas:
+  //   "content"
+  //   "figure";
   color: var(--light);
   background-color: var(--primary);
   min-height: 33vh;
+  max-width: 100%;
+  overflow: hidden;
 
   @include border(var(--primary));
 
   @include breakpoint(md) {
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     grid-template-rows: auto;
     margin-bottom: 2rem;
@@ -54,13 +57,13 @@
     margin-bottom: 0;
   }
 
-  &--left {
+  &--right {
     @include breakpoint(md) {
       grid-template-areas: "content content figure";
     }
   }
 
-  &--right {
+  &--left {
     @include breakpoint(md) {
       grid-template-areas: "figure content content";
     }
@@ -75,7 +78,7 @@
     padding: ($pad/2);
 
     @include breakpoint(xl) {
-      padding: 0;
+      padding: $pad;
     }
   }
 
@@ -85,11 +88,20 @@
     //margin-top: 0;
   }
 
+  &__copy h2,
+  &__copy h2,
+  &__copy h4,
+  &__copy h5,
+  &__copy h6 {
+    color: var(--light);
+  }
+
   .figure {
     background-color: var(--light);
-    display: grid;
+    display: block;
 
     @include breakpoint(md) {
+      display: grid;
       grid-area: figure;
     }
   }

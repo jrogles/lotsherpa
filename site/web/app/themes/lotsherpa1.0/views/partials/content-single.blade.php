@@ -8,7 +8,7 @@
     <div class="post__categories">
       @foreach (get_the_category() as $cat)
         @if ($cat->name !== 'Featured')
-          <a href="/{{ $cat->name }}/" class="post__category">{{ $cat->name }}</a>
+          <a href="/category/{{ $cat->slug }}" class="post__category">{{ $cat->name }}</a>
         @endif
       @endforeach
     </div>

@@ -9,8 +9,6 @@ export default {
       once: false,
     });
 
-
-
      $('a[href*="#"]:not([href="#"])').click(function() {
        if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
          var target = $(this.hash);
@@ -57,8 +55,6 @@ export default {
             }
           });
 
-          //console.log(slideEffect);
-
           var newSwiper = new Swiper(this, {
             // Optional parameters
             observer: true,
@@ -67,7 +63,7 @@ export default {
             centeredSlidesBounds: true,
             roundLengths: false,
             slidesPerView: 1,
-            spaceBetween: 30,
+            spaceBetween: 50,
             direction: 'horizontal',
             loop: true,
             watchSlidesVisibilty: true,
@@ -108,9 +104,6 @@ export default {
           });
 
           newSwiper.update();
-          // $swiperz1 = newSwiper;
-          // console.log($swiperz1);
-
       });
 
       //separate  setup for affilliates
@@ -172,7 +165,6 @@ export default {
           });
 
           newSwiper.update();
-          // $swiperz.push(newSwiper);
 
       });
 
@@ -232,13 +224,8 @@ export default {
           });
 
           newSwiper.update();
-          // $swiperz.push(newSwiper);
 
       });
-
-
-
-
 
     }, 5);
 

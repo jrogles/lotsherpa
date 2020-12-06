@@ -40,32 +40,6 @@
     }
   }
 
-  .subsection {
-    grid-template-columns: 100%;
-    grid-template-rows: 50vh;
-
-    @include breakpoint(md) {
-      grid-template-columns: 1fr 1fr;
-      grid-template-rows: 33vh;
-    }
-
-    .figure {
-      background-color: var(--light);
-    }
-  }
-
-  .subsection--left {
-    @include breakpoint(md) {
-      grid-template-areas: "figure content";
-    }
-  }
-
-  .subsection--right {
-    @include breakpoint(md) {
-      grid-template-areas: "content figure";
-    }
-  }
-
   .feet {
     display: block;
     margin: 0 auto;

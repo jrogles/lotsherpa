@@ -5,13 +5,14 @@
 }
 
 .content {
-  margin-top: 6vh;
+  margin-top: 12vh;
   margin-bottom: 6vh;
   width: 100%;
   //background-color: var(--light);
 
   @include breakpoint(md) {
-    //margin-top: 0;
+    margin-top: 6vh;
+    margin-bottom: 6vh;
   }
 }
 
@@ -97,7 +98,7 @@
   }
 
   &__description {
-    margin: 0 auto;
+    margin: 0 auto 1rem auto;
     line-height: 1.75;
   }
 }

@@ -12,15 +12,18 @@
   padding: 1rem;
   margin: 1rem;
   box-sizing: border-box;
+  max-width: 100%;
+  overflow: hidden;
 
   @include contain;
-  @include border(var(--dark));
 
   @include breakpoint(md) {
     margin: 5vh auto;
     grid-template-columns: 7fr 4fr;
     grid-template-areas: "left right";
     min-height: 40vh;
+
+    @include border(var(--dark));
   }
 
   @include breakpoint(xl) {

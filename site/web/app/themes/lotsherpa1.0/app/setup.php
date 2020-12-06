@@ -27,11 +27,18 @@ add_action('after_setup_theme', function () {
      * Enable features from Soil when plugin is activated
      * @link https://roots.io/plugins/soil/
      */
-    add_theme_support('soil-clean-up');
-    add_theme_support('soil-jquery-cdn');
-    add_theme_support('soil-nav-walker');
-    add_theme_support('soil-nice-search');
-    add_theme_support('soil-relative-urls');
+    add_action('after_setup_theme', function() {
+    add_theme_support('soil', [
+        'clean-up',
+        'disable-rest-api',
+        'disable-asset-versioning',
+        'disable-trackbacks',
+        'js-to-footer',
+        'nav-walker',
+        'nice-search',
+        'relative-urls'
+    ]);
+});
 
     /**
      * Enable plugins to manage the document title
@@ -175,3 +182,53 @@ add_filter('sober/models/path', function () {
 add_filter('sober/controller/path', function () {
     return get_theme_file_path() . '/app/controllers';
 });
+
+/** TGM plugin activation **/
+require_once (get_template_directory() . '/includes/class-tgm-plugin-activation.php');
+
+add_action( 'tgmpa_register', function () {
+    $plugins = array(
+        array(
+            'name'               => 'Soil', // The plugin name.
+            'slug'               => 'soil', // The plugin slug (typically the folder name).
+            'source'             => 'soil.zip', // The plugin source.
+            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+        ),
+        array(
+            'name'               => 'Advanced Custom Fields', // The plugin name.
+            'slug'               => 'acf', // The plugin slug (typically the folder name).
+            'source'             => 'acf.zip', // The plugin source.
+            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+        ),
+        array(
+            'name'               => 'WPSVG', // The plugin name.
+            'slug'               => 'wpsvg', // The plugin slug (typically the folder name).
+            'source'             => 'wpsvg.zip', // The plugin source.
+            'required'           => true, // If false, the plugin is only 'recommended' instead of required.
+            'force_activation'   => true, // If true, plugin is activated upon theme activation and cannot be deactivated until theme switch.
+            'force_deactivation' => false, // If true, plugin is deactivated upon theme switch, useful for theme-specific plugins.
+        ),
+
+    );
+
+    $config = array(
+        'id'           => 'lotsherpa',                 // Unique ID for hashing notices for multiple instances of TGMPA.
+        'default_path' => get_template_directory() . '/includes/',                      // Default absolute path to bundled plugins.
+        'menu'         => 'tgmpa-install-plugins', // Menu slug.
+        'parent_slug'  => 'themes.php',            // Parent menu slug.
+        'capability'   => 'edit_theme_options',    // Capability needed to view plugin install page, should be a capability associated with the parent menu used.
+        'has_notices'  => true,                    // Show admin notices or not.
+        'dismissable'  => false,                    // If false, a user cannot dismiss the nag message.
+        'dismiss_msg'  => 'These plugins are required  for use with the Lotsherpa Theme.',                      // If 'dismissable' is false, this message will be output at top of nag.
+        'is_automatic' => true,                   // Automatically activate plugins after installation or not.
+        'message'      => '',                      // Message to output right before the plugins table.
+    );
+
+    tgmpa( $plugins, $config );
+});
+
+

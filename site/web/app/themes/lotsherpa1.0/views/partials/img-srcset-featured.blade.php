@@ -11,7 +11,7 @@
      sizes="(max-width: 600px) 480px,
             800px, 1200px, 1400px"
      src="{{ $img['sizes']['medium'][0] }}"
-     alt="{{ $img['alt'] }}"
+     alt="{{ $img['alt'] ?? '' }}"
      class="{{ $class ?? '' }}"
      data-aos="fade-up" />
 @endif

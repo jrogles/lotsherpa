@@ -7,6 +7,6 @@
      sizes="(max-width: 600px) 480px,
             800px, 1200px, 1400px"
      src="{!! $figure['sizes']['medium'] !!}"
-     alt="{!! $figure['alt'] !!}"
+     alt="{!! $figure['alt'] ? '' !!}"
      class="swiper-img">
 </div>
